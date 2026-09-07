@@ -1092,10 +1092,7 @@
     const footerGrid = document.getElementById('cities-grid-footer');
     if (footerGrid && typeof CITIES_LIST !== 'undefined') {
       footerGrid.innerHTML = CITIES_LIST.map(city => {
-        const href = window.location.hostname.includes('localhost') || window.location.hostname.includes('127.0.0.1')
-          ? `?city=${city.slug}`
-          : `https://${city.slug}.ergoterapi.com.tr`;
-        return `<a href="${href}" class="city-link">${city.emoji} ${city.name}</a>`;
+        return `<a href="/${city.slug}" class="city-link">${city.emoji} ${city.name}</a>`;
       }).join('');
     }
 
