@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO — dynamically updated by app.js -->
+  <title>Ergoterapi.com.tr | Türkiye'nin Ergoterapi Rehberi</title>
+  <meta name="description" content="Türkiye genelinde ergoterapi klinik ve uzman rehberi. Çocuk ergoterapisi, nörolojik rehabilitasyon, el terapisi ve daha fazlası için şehrinizi seçin." />
+  <meta name="keywords" content="ergoterapi, ergoterapist, occupational therapy, çocuk ergoterapisi, otizm terapisi, DEHB, duyu bütünleme, inme rehabilitasyonu, el terapisi, Türkiye" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="ergoterapi.com.tr" />
+  <link rel="canonical" href="https://ergoterapi.com.tr" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Ergoterapi.com.tr | Türkiye'nin Ergoterapi Rehberi" />
+  <meta property="og:description" content="81 ilde uzman ergoterapist ve klinik bul. Kişiye özel rehabilitasyon programları." />
+  <meta property="og:url" content="https://ergoterapi.com.tr" />
+  <meta property="og:locale" content="tr_TR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ergoterapi.com.tr" />
+  <meta name="twitter:description" content="Türkiye'nin ergoterapi rehberi — 81 ilde uzman bul." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Favicon — set by admin panel via localStorage -->
+  <link rel="icon" id="site-favicon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>" />
+
+  <!-- Admin Settings Loader (runs before render to avoid flash) -->
+  <script>
+    (function(){
+      try {
+        var s = JSON.parse(localStorage.getItem('ergo_admin_settings') || '{}');
+        if (s.favicon)   document.getElementById('site-favicon').href = s.favicon;
+        if (s.siteTitle) document.title = s.siteTitle;
+      } catch(e){}
+    })();
+  </script>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- PAGE LOADER -->
+<!-- ============================================================ -->
+<div id="page-loader" class="page-loader">
+  <div class="loader-logo">ergoterapi.com.tr</div>
+  <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- NOTICE BAR -->
+<!-- ============================================================ -->
+<div class="notice-bar" id="notice-bar">
+  <strong id="notice-bar-text">🎯 Ücretsiz İlk Değerlendirme</strong> — İlk görüşme tamamen ücretsizdir. <a href="#contact" style="color:#B8A9FF;font-weight:700;">Hemen randevu alın →</a>
+</div>
+
+<!-- ============================================================ -->
+<!-- NAVIGATION -->
+<!-- ============================================================ -->
+<nav id="navbar" class="navbar" role="navigation" aria-label="Ana menü">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" id="nav-logo" aria-label="ergoterapi.com.tr ana sayfa">
+        <div class="nav-logo-icon" id="nav-logo-icon" aria-hidden="true">🧠</div>
+        <div class="nav-logo-text" id="nav-logo-text">
+          <span id="nav-site-name">ergoterapi</span><span id="nav-site-domain">.com.tr</span>
+        </div>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="#services" class="nav-link">Hizmetler</a></li>
+        <li><a href="#conditions" class="nav-link">Durumlar</a></li>
+        <li><a href="#process" class="nav-link">Süreç</a></li>
+        <li><a href="#faq" class="nav-link">SSS</a></li>
+        <li><a href="#contact" class="nav-link">İletişim</a></li>
+      </ul>
+
+      <a href="#contact" class="btn btn-primary nav-cta">Randevu Al</a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Mobil menüyü aç" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobil menü">
+  <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Menüyü kapat">✕</button>
+  <a href="#services" class="nav-link mobile-nav-link">Hizmetler</a>
+  <a href="#conditions" class="nav-link mobile-nav-link">Durumlar</a>
+  <a href="#process" class="nav-link mobile-nav-link">Süreç</a>
+  <a href="#faq" class="nav-link mobile-nav-link">SSS</a>
+  <a href="#contact" class="nav-link mobile-nav-link">İletişim</a>
+  <a href="#contact" class="btn btn-primary btn-lg">Randevu Al</a>
+</div>
+
+<!-- ============================================================ -->
+<!-- HERO -->
+<!-- ============================================================ -->
+<section id="hero" class="hero" aria-label="Ana bölüm">
+  <!-- Orbs -->
+  <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="badge" id="hero-city-pill">📍 Türkiye Geneli 🇹🇷</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="city-name" id="hero-city-name">Türkiye'de</span><br />
+        Profesyonel<br />
+        <span id="hero-title-suffix">Ergoterapi</span>
+      </h1>
+
+      <p class="hero-subtitle" id="hero-subtitle">
+        Türkiye'nin kapsamlı ergoterapi rehberi. Otizm, DEHB, inme rehabilitasyonu,
+        el terapisi ve daha fazlası için 81 ilde uzman bul.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary btn-lg btn-pulse" id="hero-cta">
+          <span>🗓️</span> Ücretsiz Değerlendirme Al
+        </a>
+        <a href="#services" class="btn btn-outline btn-lg">
+          <span>📋</span> Hizmetlerimiz
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-value" id="stat-clinics">1.000+</span>
+          <span class="hero-stat-label">Onaylı Klinik</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value" id="stat-therapists">3.000+</span>
+          <span class="hero-stat-label">Uzman Terapist</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">81</span>
+          <span class="hero-stat-label">İlde Hizmet</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">%94</span>
+          <span class="hero-stat-label">Hasta Memnuniyeti</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating icons -->
+  <div class="hero-floating" aria-hidden="true">
+    <div class="float-icon">🧒</div>
+    <div class="float-icon">🧠</div>
+    <div class="float-icon">🫴</div>
+    <div class="float-icon">❤️‍🩹</div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- WHAT IS ERGOTERAPI -->
+<!-- ============================================================ -->
+<section id="what-is" class="what-is section" aria-labelledby="what-is-heading">
+  <div class="container">
+    <div class="what-is-grid">
+      <div class="what-is-content reveal">
+        <div class="badge" style="margin-bottom: 1rem;">📖 Ergoterapi Nedir?</div>
+        <h2 id="what-is-heading">
+          Anlamlı Aktivitelerle<br />
+          <span class="text-gradient">Yaşam Kalitesini</span><br />
+          Artırmak
+        </h2>
+        <p>
+          Ergoterapi (iş ve uğraşı terapisi), bireylerin fiziksel, zihinsel, duyusal veya sosyal
+          nedenlerle yaşadıkları kısıtlılıkları aşmalarına yardımcı olan, <strong>anlamlı ve amaçlı
+          aktiviteler</strong> aracılığıyla yaşam kalitesini artırmayı hedefleyen kişi merkezli bir
+          sağlık mesleğidir.
+        </p>
+        <p>
+          Temel hedef; bireyin yemek yeme, giyinme, banyo yapma gibi <strong>öz bakım becerileri</strong>
+          ile iş, okul veya sosyal aktivitelere bağımsız biçimde katılmasını sağlamaktır. Sadece hastalık
+          odaklı değil, kişinin tüm çevresiyle birlikte bütüncül (holistik) bir yaklaşım benimsenir.
+        </p>
+        <p>
+          Türkiye'de ergoterapi, 4 yıllık lisans eğitimi sonrası "Ergoterapist" unvanı alınan
+          ve Sağlık Bakanlığı tarafından denetlenen bir sağlık mesleğidir.
+        </p>
+      </div>
+
+      <div class="what-is-pillars reveal reveal-delay-2">
+        <div class="pillar">
+          <div class="pillar-icon">🔍</div>
+          <div class="pillar-content">
+            <h4>Kapsamlı Değerlendirme</h4>
+            <p>Bireyin fiziksel, bilişsel, duyusal ve psikososyal becerilerini standart testler
+               ve gözlemlerle detaylıca değerlendiririz.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">📋</div>
+          <div class="pillar-content">
+            <h4>Kişiye Özel Program</h4>
+            <p>Her birey için yaşına, ihtiyaçlarına ve yaşam tarzına uygun, ulaşılabilir
+               hedefler içeren özel bir terapi programı oluşturulur.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🎯</div>
+          <div class="pillar-content">
+            <h4>Hedef Odaklı Müdahale</h4>
+            <p>Beceri geliştirme, çevre düzenlemesi ve yardımcı cihaz eğitimi ile birey
+               günlük yaşamda bağımsızlığını kazanır.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🤝</div>
+          <div class="pillar-content">
+            <h4>Multidisipliner Ekip</h4>
+            <p>Fizyoterapistler, psikiyatristler, doktorlar ve aileyle koordineli çalışarak
+               bütüncül bir iyileşme süreci yönetilir.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SERVICES -->
+<!-- ============================================================ -->
+<section id="services" class="services section" aria-labelledby="services-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge">🏥 Hizmet Alanlarımız</span>
+      <h2 class="section-title" id="services-heading">
+        Her Yaş, Her İhtiyaç İçin<br />
+        <span class="text-gradient">Uzman Ergoterapi</span>
+      </h2>
+      <p class="section-subtitle">
+        Çocuklardan yaşlılara, fiziksel rehabilitasyondan ruh sağlığına kadar
+        geniş bir uzmanlık alanında kapsamlı hizmet sunuyoruz.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <!-- Service 1 -->
+      <article class="glass-card gradient-border service-card reveal" id="service-child">
+        <div class="service-icon">🧒</div>
+        <h3>Çocuk Ergoterapisi</h3>
+        <p>
+          Çocuğun oyun, okul ve öz bakım gibi günlük aktivitelere katılımını
+          desteklemeye odaklanır. Oyun tabanlı yaklaşımlarla çocukların motor,
+          sosyal ve bilişsel becerilerini geliştiririz.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">Otizm (OSB)</span>
+          <span class="service-tag">DEHB</span>
+          <span class="service-tag">Serebral Palsi</span>
+          <span class="service-tag">Gelişimsel Gecikme</span>
+          <span class="service-tag">Öğrenme Güçlüğü</span>
+        </div>
+      </article>
+
+      <!-- Service 2 -->
+      <article class="glass-card gradient-border service-card reveal reveal-delay-1" id="service-sensory">
+        <div class="service-icon">🌀</div>
+        <h3>Duyu Bütünleme Terapisi</h3>
+        <p>
+          Çevreden ve vücuttan gelen duyusal bilgilerin beyin tarafından doğru
+          işlenmesini sağlar. Aşırı veya az duyarlılık gösteren çocuklar ve
+          yetişkinler için özelleştirilmiş programlar uygulanır.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">Duyusal İşleme Boz.</span>
+          <span class="service-tag">Dokunsal Savunma</span>
+          <span class="service-tag">Vestibüler Sistem</span>
+          <span class="service-tag">Propriosepsiyon</span>
+        </div>
+      </article>
+
+      <!-- Service 3 -->
+      <article class="glass-card gradient-border service-card reveal reveal-delay-2" id="service-hand">
+        <div class="service-icon">🫴</div>
+        <h3>El & Üst Ekstremite Rehabilitasyonu</h3>
+        <p>
+          El yaralanmaları, iş kazaları, ameliyat sonrası dönemler ve nörolojik
+          nedenlerle ortaya çıkan el-bilek-kol sorunlarında işlevselliği
+          yeniden kazandırır. Splint (atel) uygulaması da yapılmaktadır.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">El Yaralanmaları</span>
+          <span class="service-tag">Tendon Cerrahisi</span>
+          <span class="service-tag">Kırık Sonrası</span>
+          <span class="service-tag">Romatoid Artrit</span>
+          <span class="service-tag">Splint/Atel</span>
+        </div>
+      </article>
+
+      <!-- Service 4 -->
+      <article class="glass-card gradient-border service-card reveal" id="service-neuro">
+        <div class="service-icon">🧠</div>
+        <h3>Nörolojik Rehabilitasyon</h3>
+        <p>
+          İnme, felç, travmatik beyin hasarı, Parkinson, omurilik yaralanması
+          ve MS gibi nörolojik durumlar sonrasında günlük yaşam işlevselliğini
+          yeniden kazandırır. Robotik rehabilitasyon da uygulanmaktadır.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">İnme / Felç</span>
+          <span class="service-tag">Parkinson</span>
+          <span class="service-tag">MS</span>
+          <span class="service-tag">Omurilik Yaralanması</span>
+          <span class="service-tag">Beyin Hasarı</span>
+        </div>
+      </article>
+
+      <!-- Service 5 -->
+      <article class="glass-card gradient-border service-card reveal reveal-delay-1" id="service-geriatric">
+        <div class="service-icon">🧓</div>
+        <h3>Geriatrik Ergoterapi</h3>
+        <p>
+          Yaşlı bireylerin bağımsızlıklarını sürdürmelerine ve toplumsal
+          yaşama aktif katılımlarına yardımcı olur. Ev güvenliği düzenlemeleri,
+          düşme önleme ve hafıza egzersizleri temel programlardandır.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">Alzheimer</span>
+          <span class="service-tag">Demans</span>
+          <span class="service-tag">Düşme Önleme</span>
+          <span class="service-tag">Ev Düzenlemesi</span>
+          <span class="service-tag">Bağımsızlık</span>
+        </div>
+      </article>
+
+      <!-- Service 6 -->
+      <article class="glass-card gradient-border service-card reveal reveal-delay-2" id="service-mental">
+        <div class="service-icon">💜</div>
+        <h3>Ruh Sağlığı Ergoterapisi</h3>
+        <p>
+          Psikiyatrik rahatsızlığı olan bireylerin günlük yaşama ve sosyal
+          hayata uyum sağlamalarını destekler. Anlamlı aktiviteler aracılığıyla
+          öz yetkinlik, özgüven ve sosyal beceriler geliştirilir.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">Depresyon</span>
+          <span class="service-tag">Anksiyete</span>
+          <span class="service-tag">Şizofreni</span>
+          <span class="service-tag">Bipolar Bozukluk</span>
+          <span class="service-tag">TSSB</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CONDITIONS (HASTALIKLAR / DURUMLAR) -->
+<!-- ============================================================ -->
+<section id="conditions" class="conditions section" aria-labelledby="conditions-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge">🩺 Hangi Durumlarda Başvurulur?</span>
+      <h2 class="section-title" id="conditions-heading">
+        Ergoterapinin<br />
+        <span class="text-gradient">Fark Yarattığı Durumlar</span>
+      </h2>
+      <p class="section-subtitle">
+        Aşağıdaki tanı ve durumlarda ergoterapi etkinliği bilimsel çalışmalarla
+        kanıtlanmış, yaşam kalitesini artıran müdahaleler sunmaktadır.
+      </p>
+    </div>
+
+    <div class="conditions-grid">
+      <div class="glass-card condition-card reveal">
+        <span class="condition-emoji">🧩</span>
+        <h3>Otizm Spektrum Bozukluğu</h3>
+        <p>Sosyal etkileşim, iletişim ve duyusal işleme güçlüklerini gidermek için oyun tabanlı terapiler uygulanır.</p>
+      </div>
+
+      <div class="glass-card condition-card reveal reveal-delay-1">
+        <span class="condition-emoji">⚡</span>
+        <h3>DEHB</h3>
+        <p>Dikkat ve konsantrasyon eksikliği, organizasyon becerileri ve hiperaktivitenin yönetimi için özel programlar.</p>
+      </div>
+
+      <div class="glass-card condition-card reveal reveal-delay-2">
+        <span class="condition-emoji">🧒</span>
+        <h3>Serebral Palsi</h3>
+        <p>Motor bozukluklar, postür ve günlük yaşam aktivitelerinde bağımsızlık kazanımı için yoğun rehabilitasyon.</p>
+      </div>
+
+      <div class="glass-card condition-card reveal reveal-delay-3">
+        <span class="condition-emoji">💔</span>
+        <h3>İnme / Felç Sonrası</h3>
+        <p>Beyin plastisitesini kullanarak kaybedilen motor ve bilişsel işlevlerin geri kazanılmasına destek olunur.</p>
+      </div>
+
+      <div class="glass-card condition-card reveal">
+        <span class="condition-emoji">🌀</span>
+        <h3>Parkinson Hastalığı</h3>
+        <p>Tremor, rijidite ve denge sorunlarına rağmen günlük yaşamı sürdürebilmek için uyarlanmış stratejiler geliştirilir.</p>
+      </div>
+
+      <div class="glass-card condition-card reveal reveal-delay-1">
+        <span class="condition-emoji">🧓</span>
+        <h3>Alzheimer / Demans</h3>
+        <p>Bilişsel uyarım aktiviteleri, rutin oluşturma ve çevre düzenlemeleriyle yaşam kalitesi korunur.</p>
+      </div>
+
+      <div class="glass-card condition-card reveal reveal-delay-2">
+        <span class="condition-emoji">🫴</span>
+        <h3>El & Bilek Yaralanmaları</h3>
+        <p>Kırıklar, tendon kopmaları, sinir hasarı veya ameliyat sonrası el işlevselliği en kısa sürede yeniden kazanılır.</p>
+      </div>
+
+      <div class="glass-card condition-card reveal reveal-delay-3">
+        <span class="condition-emoji">📚</span>
+        <h3>Öğrenme Güçlükleri</h3>
+        <p>Disleksi, disgrafı ve diskalküli gibi öğrenme güçlüklerinde okul performansını artırmaya yönelik destekler sunulur.</p>
+      </div>
+
+      <div class="glass-card condition-card reveal">
+        <span class="condition-emoji">⛓️</span>
+        <h3>Omurilik Yaralanması</h3>
+        <p>Yaralanma seviyesine göre günlük aktivitelere adaptasyon, yardımcı cihaz eğitimi ve çevre düzenlemeleri yapılır.</p>
+      </div>
+
+      <div class="glass-card condition-card reveal reveal-delay-1">
+        <span class="condition-emoji">🦴</span>
+        <h3>Romatoid Artrit</h3>
+        <p>Eklem koruma teknikleri, adaptif ekipman kullanımı ve ağrı yönetimi stratejileriyle yaşam kalitesi artırılır.</p>
+      </div>
+
+      <div class="glass-card condition-card reveal reveal-delay-2">
+        <span class="condition-emoji">💜</span>
+        <h3>Kaygı & Depresyon</h3>
+        <p>Anlamlı aktiviteler aracılığıyla motivasyon, rutin oluşturma ve sosyal katılım desteklenir.</p>
+      </div>
+
+      <div class="glass-card condition-card reveal reveal-delay-3">
+        <span class="condition-emoji">👶</span>
+        <h3>Gelişimsel Gecikmeler</h3>
+        <p>Erken müdahale programlarıyla motor, dil ve sosyal gelişim desteklenir; kritik dönemler en iyi şekilde değerlendirilir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PROCESS -->
+<!-- ============================================================ -->
+<section id="process" class="process section" aria-labelledby="process-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge">🗺️ Terapi Süreci</span>
+      <h2 class="section-title" id="process-heading">
+        İyileşme Yolculuğunuz<br />
+        <span class="text-gradient">Adım Adım</span>
+      </h2>
+      <p class="section-subtitle">
+        Her birey farklıdır. Sürecimiz tamamen size özel olarak planlanır ve
+        her aşamada şeffaf bir iletişim sürdürülür.
+      </p>
+    </div>
+
+    <div class="process-steps" style="max-width: 800px; margin: 0 auto;">
+      <div class="process-step reveal">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>İlk Başvuru & Ön Görüşme</h3>
+          <p>
+            Randevu alarak veya telefon ile ulaşıyorsunuz. Durumunuz ve beklentileriniz
+            hakkında kısa bir ön görüşme gerçekleştirilir. <strong>İlk değerlendirme seansı ücretsizdir.</strong>
+            Hangi alanda destek alabileceğinizi birlikte belirliyoruz.
+          </p>
+        </div>
+      </div>
+
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Kapsamlı Değerlendirme</h3>
+          <p>
+            Uzman ergoterapistimiz, standart test araçları ve gözlemlerle bireyin
+            fiziksel, bilişsel, duyusal ve sosyal becerilerini kapsamlı biçimde değerlendirir.
+            Güçlü ve geliştirilmesi gereken alanlar belirlenir. Aile ve yakınlarla da görüşülerek
+            tam bir tablo ortaya konur.
+          </p>
+        </div>
+      </div>
+
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Kişisel Terapi Programı Oluşturma</h3>
+          <p>
+            Değerlendirme bulgularına göre bireyin yaşına, ihtiyaçlarına ve yaşam
+            tarzına uygun, ulaşılabilir ve ölçülebilir hedefler içeren özel bir
+            terapi programı hazırlanır. Program; seans sıklığı, süresi ve kullanılacak
+            yöntemler açısından detaylı olarak planlanır.
+          </p>
+        </div>
+      </div>
+
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Düzenli Seans Uygulamaları</h3>
+          <p>
+            Belirlenen programa göre düzenli ergoterapi seansları uygulanır. Her seans;
+            hedef odaklı aktiviteler, beceri geliştirme egzersizleri ve adaptasyon
+            çalışmalarından oluşur. Çocuklar için oyun tabanlı, yetişkinler için
+            günlük yaşama entegre aktiviteler tercih edilir. Ev programı da verilir.
+          </p>
+        </div>
+      </div>
+
+      <div class="process-step reveal reveal-delay-4">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h3>İlerleme Takibi & Program Güncelleme</h3>
+          <p>
+            Belirli aralıklarla (genellikle 4-6 haftada bir) kapsamlı ilerleme değerlendirmesi
+            yapılır. Hedeflere ulaşma durumu ailelere ve ilgili sağlık profesyonellerine
+            raporlanır. Program, gelişime göre güncellenir. Hedeflere ulaşıldığında
+            süreç başarıyla tamamlanır.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- WHY US — STATS -->
+<!-- ============================================================ -->
+<section id="why-us" class="why-us section" aria-labelledby="why-us-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge">⭐ Neden Biz?</span>
+      <h2 class="section-title" id="why-us-heading">
+        Binlerce Bireyin Hayatını<br />
+        <span class="text-gradient">Değiştirdik</span>
+      </h2>
+    </div>
+
+    <div class="stats-grid">
+      <div class="glass-card stat-card reveal">
+        <span class="stat-number" data-counter="15000">0</span>
+        <span class="stat-label">Başarılı Hasta</span>
+      </div>
+      <div class="glass-card stat-card reveal reveal-delay-1">
+        <span class="stat-number" data-counter="3000" data-suffix="+">0</span>
+        <span class="stat-label">Uzman Terapist</span>
+      </div>
+      <div class="glass-card stat-card reveal reveal-delay-2">
+        <span class="stat-number" data-counter="81">0</span>
+        <span class="stat-label">İlde Hizmet</span>
+      </div>
+      <div class="glass-card stat-card reveal reveal-delay-3">
+        <span class="stat-number" data-counter="94" data-suffix="%">0</span>
+        <span class="stat-label">Hasta Memnuniyeti</span>
+      </div>
+    </div>
+
+    <div class="why-reasons">
+      <div class="glass-card reason-card reveal">
+        <div class="reason-icon">🏆</div>
+        <h3>Uzman & Lisanslı Terapistler</h3>
+        <p>Tüm ergoterapistlerimiz, Sağlık Bakanlığı onaylı 4 yıllık lisans mezunu ve sürekli
+           mesleki gelişim programlarına katılan uzmanlardır.</p>
+      </div>
+      <div class="glass-card reason-card reveal reveal-delay-1">
+        <div class="reason-icon">🔬</div>
+        <h3>Bilimsel Kanıta Dayalı Yöntemler</h3>
+        <p>Uygulanan tüm müdahaleler uluslararası bilimsel literatüre dayalı, etkinliği kanıtlanmış
+           yöntemlerden oluşmaktadır.</p>
+      </div>
+      <div class="glass-card reason-card reveal reveal-delay-2">
+        <div class="reason-icon">🎯</div>
+        <h3>Kişiye Özel Yaklaşım</h3>
+        <p>Her birey farklıdır. Standart protokoller yerine her kişinin ihtiyaçlarına,
+           hedeflerine ve yaşam tarzına göre özel program oluşturulur.</p>
+      </div>
+      <div class="glass-card reason-card reveal">
+        <div class="reason-icon">👨‍👩‍👧</div>
+        <h3>Aile Dahil Süreç</h3>
+        <p>Aile eğitimi ve ev programları ile terapi sadece klinikte değil, günlük yaşamın
+           tamamına yayılır. Aile, sürecin aktif bir parçasıdır.</p>
+      </div>
+      <div class="glass-card reason-card reveal reveal-delay-1">
+        <div class="reason-icon">🤝</div>
+        <h3>Multidisipliner Ekip</h3>
+        <p>Fizyoterapist, psikolog, dil-konuşma terapisti ve doktorlarla koordineli çalışarak
+           en bütüncül sonuçlar elde edilir.</p>
+      </div>
+      <div class="glass-card reason-card reveal reveal-delay-2">
+        <div class="reason-icon">📱</div>
+        <h3>Dijital Takip Sistemi</h3>
+        <p>İlerleme raporları, ev egzersiz programları ve randevu yönetimi dijital platformumuz
+           üzerinden kolayca takip edilebilir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FAQ -->
+<!-- ============================================================ -->
+<section id="faq" class="faq section" aria-labelledby="faq-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge">❓ Sık Sorulan Sorular</span>
+      <h2 class="section-title" id="faq-heading">
+        Merak Ettiğiniz<br />
+        <span class="text-gradient">Her Şeyi Cevaplayalım</span>
+      </h2>
+    </div>
+
+    <div class="faq-grid">
+
+      <div class="faq-item reveal">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          Ergoterapi ile fizyoterapi arasındaki fark nedir?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Fizyoterapi; ağrı giderme, güçlendirme ve fiziksel fonksiyonu iyileştirmeye odaklanırken,
+            ergoterapi bu fonksiyonları <strong>günlük yaşamda anlamlı aktivitelere dönüştürmeye</strong> odaklanır.
+            Örneğin; fizyoterapi el kaslarını güçlendirirken, ergoterapi bu gücü kalem tutma,
+            düğme ilikleme gibi işlevsel becerilere entegre eder. Sıklıkla birlikte çalışırlar.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-1">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          Kaç seans gerekmektedir?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Seans sayısı; bireyin durumuna, hedeflerine ve ilerleme hızına göre değişir.
+            Hafif durumlar için 8-12 seans yeterli olabilirken, kronik veya karmaşık
+            durumlarda aylarca süren programlar uygulanabilir. Terapist, düzenli değerlendirmelerle
+            sürecin ne zaman tamamlanacağını belirler.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          Bir seans ne kadar sürer?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Standart bir ergoterapi seansı genellikle <strong>45-60 dakika</strong> sürer.
+            Değerlendirme seansları ise 60-90 dakika arasında değişebilir.
+            Çocuklarda seans süresi yaşa ve dikkate göre bazen 30-45 dakika olarak ayarlanır.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-1">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          Ergoterapi ücretleri ne kadardır?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Türkiye'de seans başı ücretler genellikle <strong>500 TL ile 3.500 TL</strong> arasında
+            değişmektedir. Ücret; şehir, kurumun türü (kamu/özel), terapistin deneyimi ve
+            seans içeriğine göre farklılık gösterir. İlk değerlendirme seansımız ücretsizdir.
+            Paket programlarda indirimli fiyatlar sunulabilmektedir.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          Sigorta ergoterapi seanslarını karşılar mı?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            SGK, devlet hastanelerindeki ergoterapi hizmetlerini kısmen karşılayabilir.
+            Özel sağlık sigortaları ise farklı poliçe kapsamlarına göre değişmektedir.
+            Bağlı olduğunuz sigorta şirketini veya SGK'yı arayarak kapsamınızı öğrenmenizi öneririz.
+            Bazı özel klinikler sigorta kurumlarıyla anlaşmalı çalışmaktadır.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-1">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          Çocuğumun ergoterapiye ihtiyacı var mı?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Aşağıdaki belirtiler varsa profesyonel değerlendirme önerilir: oyuncakları
+            akranlarından farklı kullanma, giyinme-kalem tutma gibi becerilerde zorlanma,
+            belirli dokulara veya seslere aşırı tepki, sosyal oyunlarda güçlük, düşük dikkat
+            süresi, okumayı-yazmayı öğrenmede gecikme. Erken müdahale sonuçları önemli ölçüde
+            iyileştirir.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          Ergoterapi seansına ebeveyn de katılabilir mi?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Evet, özellikle çocuk ergoterapisinde ebeveyn katılımı teşvik edilir.
+            Terapist, ebeveynlere ev programı ve stratejiler öğretir. Bazı seanslar
+            ebeveynin aktif katılımıyla yürütülürken, bazı seansların bir bölümü
+            gözlem için ayrılabilir. Ebeveyn katılımı sonuçları önemli ölçüde artırır.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-1">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          İnme geçirdikten ne kadar sonra ergoterapiye başlanmalı?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            İnme sonrası ergoterapi <strong>mümkün olan en erken aşamada</strong> başlanmalıdır.
+            Beyin plastisitesi (yeniden öğrenme kapasitesi) ilk 3-6 ayda en yüksek
+            seviyededir. Hastane yatışı sırasında bile yatakta başlanan ergoterapi
+            uygulamaları mevcuttur. Geç başlansa da ergoterapi her aşamada fayda sağlar.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          Evde ergoterapi hizmeti var mı?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Evet, hareket kısıtlılığı olan yaşlı bireyler ve yoğun bakım sonrası
+            hastalar için <strong>evde ergoterapi hizmeti</strong> sunulmaktadır.
+            Ayrıca ergoterapist, ev ortamını değerlendirerek güvenlik düzenlemeleri
+            ve adaptasyonlar için önerilerde bulunabilir. Randevu formunda
+            "Ev Ziyareti" seçeneğini işaretleyebilirsiniz.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-1">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          Duyu bütünleme terapisi ne kadar sürede sonuç verir?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Duyu bütünleme terapisinde ilerleme bireyden bireye önemli ölçüde farklılık
+            gösterir. Hafif duyusal sorunlarda 3-4 ayda belirgin iyileşme görülebilirken,
+            daha karmaşık durumlarda 12-18 aylık bir süreç gerekebilir. Ev programının
+            düzenli uygulanması ve ebeveyn katılımı süreci önemli ölçüde hızlandırır.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          Ergoterapiste başvurmak için doktor referansı şart mı?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Özel kliniklere doğrudan başvurabilirsiniz; doktor referansı zorunlu değildir.
+            Ancak devlet hastanesi ve SGK kapsamında ergoterapi almak istiyorsanız,
+            ilgili uzman doktor (nörolog, fizik tedavi uzmanı, çocuk psikiyatristi vb.)
+            tarafından yazılmış bir yönlendirme gerekmektedir.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-1">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          Ergoterapi ile ilaç tedavisi birlikte kullanılabilir mi?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Evet, ergoterapi ilaç tedavisini tamamlayan bir yaklaşımdır.
+            Özellikle DEHB, Parkinson, depresyon ve nörolojik hastalıklarda
+            ilaç tedavisiyle birlikte uygulandığında sonuçlar önemli ölçüde
+            iyileşmektedir. Terapistiniz, diğer sağlık profesyonelleriyle koordineli
+            çalışarak en uygun programı planlar.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CITY SECTION -->
+<!-- ============================================================ -->
+<section id="city" class="city-section section" aria-labelledby="city-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge">📍 Şehrinizde Ergoterapi</span>
+      <h2 class="section-title" id="city-heading">
+        <span id="city-page-title" class="text-gradient">Türkiye'de Ergoterapi</span>
+      </h2>
+    </div>
+
+    <div class="city-content">
+      <div class="glass-card city-info-card reveal">
+        <div class="city-info-header">
+          <span class="city-flag" id="city-flag">🇹🇷</span>
+          <div>
+            <h3 id="city-section-name">Türkiye</h3>
+            <p id="city-region">Tüm Bölgeler</p>
+          </div>
+        </div>
+
+        <div class="city-meta">
+          <div class="city-meta-item">
+            <div class="label">Nüfus</div>
+            <div class="value" id="city-population">85 Milyon</div>
+          </div>
+          <div class="city-meta-item">
+            <div class="label">Klinik Sayısı</div>
+            <div class="value" id="city-clinics">1.000+</div>
+          </div>
+          <div class="city-meta-item">
+            <div class="label">Terapist Sayısı</div>
+            <div class="value" id="city-therapists">3.000+</div>
+          </div>
+          <div class="city-meta-item">
+            <div class="label">Kapsama Alanı</div>
+            <div class="value">81 İl</div>
+          </div>
+        </div>
+
+        <p class="city-description" id="city-description">
+          Türkiye genelinde ergoterapi hizmetleri, 81 ilde aktif olarak sunulmaktadır.
+          Uzman ergoterapistler çocuklardan yaşlılara kadar tüm yaş gruplarına kapsamlı
+          rehabilitasyon programları uygulamaktadır.
+        </p>
+
+        <div class="service-tags" id="city-specialties" style="margin-top: 1rem;">
+          <span class="service-tag">Tüm Uzmanlık Alanları</span>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <div class="badge" style="margin-bottom: 1.5rem;">🗺️ Şehrinizi Seçin</div>
+        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7;">
+          Türkiye'nin 81 ilinde ergoterapi uzmanlarına ulaşabilirsiniz.
+          Şehrinize özel klinik bilgileri, uzman sayısı ve hizmet alanları için
+          aşağıdan ilinizi seçin.
+        </p>
+        <div id="cities-grid" class="cities-grid">
+          <!-- Filled by app.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CONTACT / APPOINTMENT -->
+<!-- ============================================================ -->
+<section id="contact" class="contact section" aria-labelledby="contact-heading">
+  <div class="container">
+    <div class="contact-wrapper">
+      <div class="contact-info reveal">
+        <span class="badge" style="margin-bottom: 1.5rem;">📞 İletişim</span>
+        <h2 id="contact-heading">
+          Ücretsiz Değerlendirme<br />
+          <span class="text-gradient">Randevusu Alın</span>
+        </h2>
+        <p>
+          İlk adımı atmak için formu doldurun ya da bizi arayın.
+          En geç <strong>24 saat içinde</strong> uzman ekibimiz size dönüş yapacaktır.
+          İlk değerlendirme seansı tamamen <strong>ücretsizdir</strong>.
+        </p>
+
+        <div class="contact-methods">
+          <div class="contact-method">
+            <div class="contact-method-icon">📞</div>
+            <div class="contact-method-text">
+              <div class="label">Telefon</div>
+              <div class="value" id="contact-phone">0850 XXX XX XX</div>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-method-icon">📧</div>
+            <div class="contact-method-text">
+              <div class="label">E-posta</div>
+              <div class="value" id="contact-email">info@ergoterapi.com.tr</div>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-method-icon">💬</div>
+            <div class="contact-method-text">
+              <div class="label">WhatsApp</div>
+              <div class="value" id="contact-whatsapp">0850 XXX XX XX</div>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-method-icon">🕐</div>
+            <div class="contact-method-text">
+              <div class="label">Çalışma Saatleri</div>
+              <div class="value" id="contact-hours">Pzt–Cmt: 09:00–18:00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card contact-form reveal reveal-delay-2">
+        <h3 class="form-title">🗓️ Randevu Formu</h3>
+
+        <form id="contact-form" novalidate>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="form-name">Ad Soyad *</label>
+              <input type="text" id="form-name" class="form-input" placeholder="Adınız Soyadınız" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="form-phone">Telefon *</label>
+              <input type="tel" id="form-phone" class="form-input" placeholder="05XX XXX XX XX" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="form-email">E-posta</label>
+              <input type="email" id="form-email" class="form-input" placeholder="ornek@email.com" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="form-city">Şehir *</label>
+              <select id="form-city" class="form-select" required>
+                <!-- Filled by app.js -->
+              </select>
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="form-condition">Hangi Konuda Yardım Almak İstiyorsunuz?</label>
+              <select id="form-condition" class="form-select">
+                <option value="">Seçiniz</option>
+                <option value="cocuk">Çocuk Ergoterapisi (Otizm, DEHB, Serebral Palsi vb.)</option>
+                <option value="duyu">Duyu Bütünleme Terapisi</option>
+                <option value="el">El & Üst Ekstremite Rehabilitasyonu</option>
+                <option value="noro">Nörolojik Rehabilitasyon (İnme, Parkinson vb.)</option>
+                <option value="geriatri">Geriatrik Ergoterapi (Alzheimer, Demans vb.)</option>
+                <option value="ruh">Ruh Sağlığı Ergoterapisi</option>
+                <option value="diger">Diğer / Bilmiyorum</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="form-message">Mesajınız</label>
+              <textarea id="form-message" class="form-textarea"
+                placeholder="Durumunuzu kısaca açıklayın. Yaş, tanı, ne zamandır devam ettiği gibi bilgiler bize yardımcı olur..."
+              ></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg form-submit" id="form-submit-btn">
+            <span>🚀</span> Ücretsiz Randevu Al
+          </button>
+        </form>
+
+        <div id="form-success" class="form-success">
+          ✅ Mesajınız alındı! 24 saat içinde uzman ekibimiz sizi arayacaktır.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ALL CITIES LIST -->
+<!-- ============================================================ -->
+<section id="cities" class="cities-section section-sm" aria-label="Tüm iller">
+  <div class="container">
+    <div class="section-header reveal" style="margin-bottom: 2rem;">
+      <span class="badge">🗺️ 81 İlde Hizmet</span>
+      <h2 class="section-title" style="font-size: 2rem;">
+        İlinizi Seçin
+      </h2>
+    </div>
+    <div id="cities-grid-footer" class="cities-grid reveal">
+      <!-- Filled by secondary call in footer area -->
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo">
+          <div class="nav-logo-icon">🧠</div>
+          <div class="nav-logo-text"><span>ergoterapi</span>.com.tr</div>
+        </a>
+        <p>
+          Türkiye'nin kapsamlı ergoterapi rehberi. 81 ilde uzman ergoterapistler ve
+          kliniklere ulaşmak için tek adres. Çocuklardan yaşlılara, her ihtiyaç için
+          kişiye özel rehabilitasyon.
+        </p>
+        <div class="social-links" style="margin-top: 1.5rem;">
+          <a href="#" class="social-link" aria-label="Instagram">📸</a>
+          <a href="#" class="social-link" aria-label="Facebook">👥</a>
+          <a href="#" class="social-link" aria-label="YouTube">▶️</a>
+          <a href="#" class="social-link" aria-label="Twitter/X">✖️</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Hizmetler</h4>
+        <ul class="footer-links">
+          <li><a href="#service-child">Çocuk Ergoterapisi</a></li>
+          <li><a href="#service-sensory">Duyu Bütünleme</a></li>
+          <li><a href="#service-hand">El Terapisi</a></li>
+          <li><a href="#service-neuro">Nörolojik Rehab.</a></li>
+          <li><a href="#service-geriatric">Geriatrik Ergoterapi</a></li>
+          <li><a href="#service-mental">Ruh Sağlığı</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Bilgi</h4>
+        <ul class="footer-links">
+          <li><a href="#what-is">Ergoterapi Nedir?</a></li>
+          <li><a href="#conditions">Hangi Durumlarda?</a></li>
+          <li><a href="#process">Terapi Süreci</a></li>
+          <li><a href="#faq">Sık Sorulan Sorular</a></li>
+          <li><a href="#why-us">Neden Biz?</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>İletişim</h4>
+        <ul class="footer-links">
+          <li><a href="#contact">Randevu Al</a></li>
+          <li><a href="mailto:info@ergoterapi.com.tr">info@ergoterapi.com.tr</a></li>
+          <li><a href="tel:+908501234567">0850 XXX XX XX</a></li>
+          <li><a href="#">Gizlilik Politikası</a></li>
+          <li><a href="#">KVKK Aydınlatma Metni</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>
+        © 2024 ergoterapi.com.tr — Tüm hakları saklıdır. |
+        <a href="#" style="margin-left: 0.5rem;">Gizlilik Politikası</a> ·
+        <a href="#" style="margin-left: 0.5rem;">KVKK</a>
+      </div>
+      <div style="color: var(--text-muted); font-size: 0.75rem;">
+        ⚠️ Bu site tıbbi tavsiye niteliği taşımaz. Tanı ve tedavi için doktorunuza başvurunuz.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- SCRIPTS (cities.js önce yüklenmeli) -->
+<!-- ============================================================ -->
+<script src="assets/js/cities.js"></script>
+<script src="assets/js/app.js"></script>
+
+<!-- Secondary cities grid for footer section -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const footerGrid = document.getElementById('cities-grid-footer');
+    if (footerGrid && typeof CITIES_LIST !== 'undefined') {
+      footerGrid.innerHTML = CITIES_LIST.map(city => {
+        const href = window.location.hostname.includes('localhost') || window.location.hostname.includes('127.0.0.1')
+          ? `?city=${city.slug}`
+          : `https://${city.slug}.ergoterapi.com.tr`;
+        return `<a href="${href}" class="city-link">${city.emoji} ${city.name}</a>`;
+      }).join('');
+    }
+
+    // FAQ keyboard accessibility
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          q.click();
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

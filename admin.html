@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Paneli — ergoterapi.com.tr</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ——— Reset ——— */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    /* ——— Variables ——— */
+    :root {
+      --bg:        #0A0A12;
+      --bg-panel:  #0F0F1A;
+      --bg-card:   #16162A;
+      --bg-input:  #1C1C30;
+      --border:    rgba(255,255,255,0.08);
+      --border-focus: #7C3AED;
+      --primary:   #7C3AED;
+      --primary-2: #6C63FF;
+      --teal:      #3ECFCF;
+      --accent:    #FFD166;
+      --success:   #06D6A0;
+      --danger:    #EF4444;
+      --text:      #F0EEFF;
+      --text-2:    #A89EC9;
+      --text-3:    #6B6480;
+      --grad:      linear-gradient(135deg, #7C3AED, #6C63FF, #3ECFCF);
+      --font:      'Plus Jakarta Sans', system-ui, sans-serif;
+      --radius:    12px;
+      --radius-sm: 8px;
+      --radius-lg: 16px;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ——— Login Screen ——— */
+    #login-screen {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      z-index: 9999;
+      padding: 1rem;
+    }
+
+    .login-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .login-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .login-box h1 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .login-box p { color: var(--text-2); font-size: 0.875rem; margin-bottom: 1.5rem; }
+
+    .login-input {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .login-input:focus { border-color: var(--border-focus); }
+
+    .login-btn {
+      width: 100%;
+      padding: 0.875rem;
+      background: var(--grad);
+      border: none;
+      border-radius: var(--radius-sm);
+      color: #fff;
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .login-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .login-error {
+      color: var(--danger);
+      font-size: 0.8rem;
+      margin-top: 0.75rem;
+      display: none;
+    }
+
+    /* ——— Admin Layout ——— */
+    #admin-app { display: none; flex: 1; }
+
+    .admin-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,18,0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .admin-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .admin-logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--grad);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .admin-logo span {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header-actions { display: flex; gap: 0.75rem; align-items: center; }
+
+    .admin-body {
+      display: flex;
+      min-height: calc(100vh - 64px);
+    }
+
+    /* ——— Sidebar ——— */
+    .admin-sidebar {
+      width: 220px;
+      flex-shrink: 0;
+      background: var(--bg-panel);
+      border-right: 1px solid var(--border);
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 64px;
+      height: calc(100vh - 64px);
+      overflow-y: auto;
+    }
+
+    .sidebar-section {
+      padding: 0 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .sidebar-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-3);
+      padding: 0 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      padding: 0.625rem 0.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-2);
+      cursor: pointer;
+      transition: all 0.15s;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      font-family: var(--font);
+    }
+
+    .sidebar-link:hover {
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+    }
+
+    .sidebar-link.active {
+      background: rgba(124,58,237,0.15);
+      color: #B8A9FF;
+    }
+
+    .sidebar-link .icon { font-size: 1rem; width: 1.25rem; text-align: center; }
+
+    /* ——— Main Content ——— */
+    .admin-main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 900px;
+    }
+
+    /* ——— Panel Sections ——— */
+    .panel-section { display: none; }
+    .panel-section.active { display: block; }
+
+    .panel-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 0.375rem;
+    }
+
+    .panel-subtitle {
+      color: var(--text-2);
+      font-size: 0.875rem;
+      margin-bottom: 2rem;
+    }
+
+    /* ——— Cards ——— */
+    .admin-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card-desc {
+      font-size: 0.8rem;
+      color: var(--text-3);
+      margin-bottom: 1.25rem;
+    }
+
+    /* ——— Form Elements ——— */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-row.full { grid-template-columns: 1fr; }
+
+    .field { display: flex; flex-direction: column; gap: 0.375rem; }
+
+    .field-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-2);
+    }
+
+    .field-input, .field-select, .field-textarea {
+      padding: 0.75rem 1rem;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 0.875rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+
+    .field-input:focus, .field-select:focus, .field-textarea:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(124,58,237,0.15);
+    }
+
+    .field-input::placeholder, .field-textarea::placeholder { color: var(--text-3); }
+    .field-textarea { resize: vertical; min-height: 80px; }
+    .field-select { cursor: pointer; }
+    .field-select option { background: var(--bg-panel); }
+
+    /* ——— Toggle ——— */
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .toggle-row:last-child { border-bottom: none; }
+
+    .toggle-info h4 { font-size: 0.875rem; font-weight: 600; }
+    .toggle-info p { font-size: 0.75rem; color: var(--text-3); }
+
+    .toggle {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .toggle input { opacity: 0; width: 0; height: 0; }
+
+    .toggle-slider {
+      position: absolute;
+      inset: 0;
+      background: var(--border);
+      border-radius: 24px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .toggle-slider::before {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      left: 3px;
+      top: 3px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+
+    .toggle input:checked + .toggle-slider { background: var(--primary); }
+    .toggle input:checked + .toggle-slider::before { transform: translateX(20px); }
+
+    /* ——— Logo Upload ——— */
+    .logo-upload-area {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .logo-upload-area:hover {
+      border-color: var(--primary);
+      background: rgba(124,58,237,0.05);
+    }
+
+    .logo-upload-area input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+
+    .logo-preview {
+      width: 80px;
+      height: 80px;
+      background: rgba(124,58,237,0.1);
+      border-radius: var(--radius);
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      overflow: hidden;
+    }
+
+    .logo-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .upload-hint {
+      font-size: 0.8rem;
+      color: var(--text-3);
+    }
+
+    /* ——— Color Picker ——— */
+    .color-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    input[type="color"] {
+      width: 44px;
+      height: 36px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      background: none;
+      padding: 2px;
+    }
+
+    /* ——— Buttons ——— */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.25rem;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      font-family: var(--font);
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--grad);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(124,58,237,0.3);
+    }
+
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(124,58,237,0.45); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-2);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover { background: rgba(255,255,255,0.05); color: var(--text); }
+
+    .btn-danger {
+      background: rgba(239,68,68,0.1);
+      color: var(--danger);
+      border: 1px solid rgba(239,68,68,0.2);
+    }
+
+    .btn-danger:hover { background: rgba(239,68,68,0.2); }
+
+    .btn-success {
+      background: rgba(6,214,160,0.15);
+      color: var(--success);
+      border: 1px solid rgba(6,214,160,0.3);
+    }
+
+    /* ——— Save Bar ——— */
+    .save-bar {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      z-index: 200;
+    }
+
+    .save-bar.visible { transform: translateY(0); opacity: 1; }
+
+    .save-bar-text { font-size: 0.875rem; color: var(--text-2); }
+
+    /* ——— Toast ——— */
+    .toast {
+      position: fixed;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--success);
+      color: #000;
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.875rem;
+      opacity: 0;
+      transition: all 0.3s;
+      pointer-events: none;
+      z-index: 300;
+      white-space: nowrap;
+    }
+
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ——— Preview Badge ——— */
+    .preview-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.25rem 0.75rem;
+      background: rgba(255,209,102,0.1);
+      border: 1px solid rgba(255,209,102,0.25);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* ——— Live Preview ——— */
+    .live-preview {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    .live-preview-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-3);
+      margin-bottom: 0.75rem;
+    }
+
+    .live-navbar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      background: rgba(0,0,0,0.4);
+      border-radius: var(--radius-sm);
+    }
+
+    .live-logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--grad);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      overflow: hidden;
+    }
+
+    .live-logo-text { font-size: 0.875rem; font-weight: 800; }
+    .live-logo-text span { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    /* ——— Scrollbar ——— */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: #3a3a5c; border-radius: 99px; }
+
+    /* ——— Responsive ——— */
+    @media (max-width: 768px) {
+      .admin-sidebar { display: none; }
+      .admin-main { padding: 1rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ——— Divider ——— */
+    .divider { height: 1px; background: var(--border); margin: 1.25rem 0; }
+
+    /* ——— Status dot ——— */
+    .status-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--success);
+      display: inline-block;
+      margin-right: 6px;
+      box-shadow: 0 0 8px var(--success);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- LOGIN SCREEN -->
+<!-- ============================================================ -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-icon">🔐</div>
+    <h1>Admin Girişi</h1>
+    <p>ergoterapi.com.tr yönetim paneline erişmek için şifrenizi girin.</p>
+    <input type="password" id="admin-password" class="login-input" placeholder="Şifre" autocomplete="current-password" />
+    <button class="login-btn" onclick="doLogin()">Giriş Yap →</button>
+    <div class="login-error" id="login-error">❌ Hatalı şifre. Lütfen tekrar deneyin.</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ADMIN APP -->
+<!-- ============================================================ -->
+<div id="admin-app">
+
+  <!-- Header -->
+  <header class="admin-header">
+    <div class="admin-logo">
+      <div class="admin-logo-icon">⚙️</div>
+      <div><span>Admin</span> Paneli</div>
+    </div>
+    <div class="header-actions">
+      <span class="preview-badge" id="save-status">● Kaydedilmemiş değişiklik</span>
+      <a href="index.html" target="_blank" class="btn btn-outline">🌐 Siteyi Gör</a>
+      <button class="btn btn-primary" onclick="saveAllSettings()">💾 Kaydet</button>
+      <button class="btn btn-danger" onclick="doLogout()" title="Çıkış">🚪</button>
+    </div>
+  </header>
+
+  <div class="admin-body">
+
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-label">Genel</div>
+        <button class="sidebar-link active" onclick="showPanel('brand')" id="nav-brand">
+          <span class="icon">🎨</span> Marka & Logo
+        </button>
+        <button class="sidebar-link" onclick="showPanel('contact')" id="nav-contact">
+          <span class="icon">📞</span> İletişim Bilgileri
+        </button>
+        <button class="sidebar-link" onclick="showPanel('notice')" id="nav-notice">
+          <span class="icon">📢</span> Duyuru Bandı
+        </button>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Site Ayarları</div>
+        <button class="sidebar-link" onclick="showPanel('seo')" id="nav-seo">
+          <span class="icon">🔍</span> SEO & Meta
+        </button>
+        <button class="sidebar-link" onclick="showPanel('social')" id="nav-social">
+          <span class="icon">📱</span> Sosyal Medya
+        </button>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Araçlar</div>
+        <button class="sidebar-link" onclick="showPanel('reset')" id="nav-reset">
+          <span class="icon">🔄</span> Sıfırla
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="admin-main">
+
+      <!-- ——— PANEL: MARKA & LOGO ——— -->
+      <section class="panel-section active" id="panel-brand">
+        <div class="panel-title">🎨 Marka & Logo Ayarları</div>
+        <p class="panel-subtitle">Logo, favicon, site adı ve görsel kimliği buradan düzenleyin.</p>
+
+        <!-- Logo Upload -->
+        <div class="admin-card">
+          <div class="card-title">🖼️ Logo</div>
+          <div class="card-desc">PNG veya SVG formatında şeffaf arka planlı logo önerilir. (Maks. 2MB)</div>
+
+          <div style="display:flex; gap:1rem; margin-bottom:1rem;">
+            <button class="btn btn-outline" id="logo-type-emoji" onclick="setLogoType('emoji')" style="flex:1">😊 Emoji / Metin</button>
+            <button class="btn btn-primary" id="logo-type-image" onclick="setLogoType('image')" style="flex:1">🖼️ Resim Yükle</button>
+          </div>
+
+          <!-- Emoji mode -->
+          <div id="logo-emoji-section">
+            <div class="form-row">
+              <div class="field">
+                <label class="field-label">Logo Emoji veya İkon</label>
+                <input type="text" id="logo-emoji" class="field-input" placeholder="🧠" maxlength="2" oninput="updateLogoPreview()" />
+              </div>
+              <div class="field">
+                <label class="field-label">Site Adı (Logo yanındaki metin)</label>
+                <input type="text" id="site-name-input" class="field-input" placeholder="ergoterapi" oninput="updateLogoPreview()" />
+              </div>
+            </div>
+            <div class="field" style="margin-bottom:0;">
+              <label class="field-label">Domain uzantısı</label>
+              <input type="text" id="site-domain-input" class="field-input" placeholder=".com.tr" oninput="updateLogoPreview()" />
+            </div>
+          </div>
+
+          <!-- Image mode -->
+          <div id="logo-image-section" style="display:none;">
+            <div class="logo-upload-area" id="logo-drop-zone">
+              <input type="file" id="logo-file" accept="image/*" onchange="handleLogoUpload(event)" />
+              <div class="logo-preview" id="logo-preview-box">
+                <span id="logo-preview-emoji">🧠</span>
+              </div>
+              <p style="font-weight:700; margin-bottom:0.25rem;">Logo dosyasını seçin veya sürükleyin</p>
+              <p class="upload-hint">PNG, SVG, JPG — Maks. 2MB — Şeffaf arka plan önerilir</p>
+            </div>
+            <button class="btn btn-danger" onclick="clearLogoImage()" style="font-size:0.8rem;">🗑️ Logoyu Kaldır</button>
+          </div>
+
+          <!-- Live Preview -->
+          <div class="live-preview">
+            <div class="live-preview-label">Canlı Önizleme</div>
+            <div class="live-navbar" id="preview-navbar">
+              <div class="live-logo-icon" id="preview-logo-icon">🧠</div>
+              <div class="live-logo-text" id="preview-logo-text">
+                <span id="preview-site-name">ergoterapi</span><span id="preview-site-domain">.com.tr</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Favicon -->
+        <div class="admin-card">
+          <div class="card-title">🔖 Favicon (Sekme İkonu)</div>
+          <div class="card-desc">Tarayıcı sekmesinde görünen küçük ikon. ICO, PNG veya SVG formatını destekler.</div>
+
+          <div class="logo-upload-area">
+            <input type="file" id="favicon-file" accept="image/*,.ico,.svg" onchange="handleFaviconUpload(event)" />
+            <div class="logo-preview" id="favicon-preview-box">
+              <span id="favicon-preview-icon">🔖</span>
+            </div>
+            <p style="font-weight:700; margin-bottom:0.25rem;">Favicon seçin</p>
+            <p class="upload-hint">ICO, PNG, SVG — 32×32px veya 64×64px önerilir</p>
+          </div>
+          <button class="btn btn-danger" onclick="clearFavicon()" style="font-size:0.8rem;">🗑️ Faviconı Kaldır</button>
+        </div>
+
+        <!-- Site Title -->
+        <div class="admin-card">
+          <div class="card-title">📄 Sayfa Başlığı (Browser Tab)</div>
+          <div class="card-desc">Tarayıcı sekmesinde ve Google arama sonuçlarında görünen başlık.</div>
+          <div class="field">
+            <label class="field-label">Site Başlığı</label>
+            <input type="text" id="site-title-input" class="field-input"
+              placeholder="ergoterapi.com.tr | Türkiye'nin Ergoterapi Rehberi" />
+          </div>
+        </div>
+      </section>
+
+      <!-- ——— PANEL: İLETİŞİM ——— -->
+      <section class="panel-section" id="panel-contact">
+        <div class="panel-title">📞 İletişim Bilgileri</div>
+        <p class="panel-subtitle">Site genelinde görünen telefon, e-posta ve çalışma saati bilgilerini düzenleyin.</p>
+
+        <div class="admin-card">
+          <div class="card-title">📱 Telefon & WhatsApp</div>
+          <div class="card-desc">Sitedeki tüm telefon alanlarını günceller.</div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label">📞 Telefon Numarası</label>
+              <input type="tel" id="input-phone" class="field-input" placeholder="0850 123 45 67" />
+            </div>
+            <div class="field">
+              <label class="field-label">💬 WhatsApp Numarası</label>
+              <input type="tel" id="input-whatsapp" class="field-input" placeholder="0532 123 45 67" />
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-title">📧 E-posta & Diğer</div>
+          <div class="card-desc">İletişim formu ve footer'da gösterilecek bilgiler.</div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label">📧 E-posta Adresi</label>
+              <input type="email" id="input-email" class="field-input" placeholder="info@ergoterapi.com.tr" />
+            </div>
+            <div class="field">
+              <label class="field-label">🕐 Çalışma Saatleri</label>
+              <input type="text" id="input-hours" class="field-input" placeholder="Pzt–Cmt: 09:00–18:00" />
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-title">📍 Adres (Opsiyonel)</div>
+          <div class="card-desc">Footer ve iletişim bölümünde gösterilecek adres.</div>
+          <div class="field">
+            <label class="field-label">Tam Adres</label>
+            <textarea id="input-address" class="field-textarea" placeholder="Örn: Atatürk Cad. No:12, Çankaya / Ankara"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- ——— PANEL: DUYURU BANDI ——— -->
+      <section class="panel-section" id="panel-notice">
+        <div class="panel-title">📢 Duyuru Bandı</div>
+        <p class="panel-subtitle">Sitenin en üstündeki ince duyuru çubuğunu özelleştirin.</p>
+
+        <div class="admin-card">
+          <div class="toggle-row">
+            <div class="toggle-info">
+              <h4>Duyuru Bandını Göster</h4>
+              <p>Kapatırsanız üst bant tamamen gizlenir.</p>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="notice-visible" checked onchange="updateNoticePreview()" />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-title">✏️ İçerik</div>
+          <div class="card-desc">Duyuru bandında gösterilecek kalın başlık ve metin.</div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label">Kalın Başlık (🎯 simgesiyle başlar)</label>
+              <input type="text" id="notice-title" class="field-input"
+                placeholder="🎯 Ücretsiz İlk Değerlendirme" oninput="updateNoticePreview()" />
+            </div>
+            <div class="field">
+              <label class="field-label">Açıklama Metni</label>
+              <input type="text" id="notice-text" class="field-input"
+                placeholder="İlk görüşme tamamen ücretsizdir." oninput="updateNoticePreview()" />
+            </div>
+          </div>
+
+          <!-- Live Preview -->
+          <div class="live-preview">
+            <div class="live-preview-label">Önizleme</div>
+            <div id="notice-preview"
+              style="background:linear-gradient(90deg,rgba(124,58,237,.15),rgba(62,207,207,.1),rgba(124,58,237,.15));
+                     border:1px solid rgba(124,58,237,.2); border-radius:8px; padding:0.6rem 1rem;
+                     text-align:center; font-size:0.85rem; color:#A89EC9;">
+              <strong style="color:#B8A9FF;" id="np-title">🎯 Ücretsiz İlk Değerlendirme</strong>
+              — <span id="np-text">İlk görüşme tamamen ücretsizdir.</span>
+              <a href="#" style="color:#B8A9FF;font-weight:700;"> Hemen randevu alın →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ——— PANEL: SEO ——— -->
+      <section class="panel-section" id="panel-seo">
+        <div class="panel-title">🔍 SEO & Meta Etiketleri</div>
+        <p class="panel-subtitle">Google arama sonuçlarında görünen başlık ve açıklama.</p>
+
+        <div class="admin-card">
+          <div class="card-title">📄 Meta Bilgileri</div>
+          <div class="form-row full">
+            <div class="field">
+              <label class="field-label">Meta Başlık (Title Tag) — Maks. 60 karakter</label>
+              <input type="text" id="seo-title" class="field-input"
+                placeholder="ergoterapi.com.tr | Türkiye'nin Ergoterapi Rehberi" maxlength="80" />
+            </div>
+          </div>
+          <div class="form-row full">
+            <div class="field">
+              <label class="field-label">Meta Açıklama (Description) — Maks. 160 karakter</label>
+              <textarea id="seo-desc" class="field-textarea" maxlength="200"
+                placeholder="Türkiye genelinde ergoterapi klinik ve uzman rehberi. 81 ilde uzman bul."></textarea>
+            </div>
+          </div>
+          <div class="form-row full">
+            <div class="field">
+              <label class="field-label">Anahtar Kelimeler (virgülle ayrılmış)</label>
+              <input type="text" id="seo-keywords" class="field-input"
+                placeholder="ergoterapi, ergoterapist, otizm, DEHB, inme rehabilitasyonu" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ——— PANEL: SOSYAL MEDYA ——— -->
+      <section class="panel-section" id="panel-social">
+        <div class="panel-title">📱 Sosyal Medya Bağlantıları</div>
+        <p class="panel-subtitle">Footer'daki sosyal medya ikonlarının bağlantıları.</p>
+
+        <div class="admin-card">
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label">📸 Instagram URL</label>
+              <input type="url" id="social-instagram" class="field-input" placeholder="https://instagram.com/..." />
+            </div>
+            <div class="field">
+              <label class="field-label">👥 Facebook URL</label>
+              <input type="url" id="social-facebook" class="field-input" placeholder="https://facebook.com/..." />
+            </div>
+            <div class="field">
+              <label class="field-label">▶️ YouTube URL</label>
+              <input type="url" id="social-youtube" class="field-input" placeholder="https://youtube.com/..." />
+            </div>
+            <div class="field">
+              <label class="field-label">✖️ X (Twitter) URL</label>
+              <input type="url" id="social-twitter" class="field-input" placeholder="https://x.com/..." />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ——— PANEL: SIFIRLA ——— -->
+      <section class="panel-section" id="panel-reset">
+        <div class="panel-title">🔄 Sıfırlama Araçları</div>
+        <p class="panel-subtitle">Tüm ayarları fabrika çıkış değerlerine döndürün.</p>
+
+        <div class="admin-card">
+          <div class="card-title">⚠️ Tüm Ayarları Sıfırla</div>
+          <div class="card-desc">Bu işlem geri alınamaz. Tüm kayıtlı ayarlar (logo, iletişim, duyuru vs.) silinecektir.</div>
+          <div class="divider"></div>
+          <button class="btn btn-danger" onclick="resetAllSettings()">
+            🗑️ Tüm Ayarları Sıfırla
+          </button>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-title">🔑 Şifreyi Değiştir</div>
+          <div class="card-desc">Admin paneline giriş şifresini değiştir. (Tarayıcı localStorage'a kaydedilir)</div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label">Yeni Şifre</label>
+              <input type="password" id="new-password" class="field-input" placeholder="Yeni şifre" />
+            </div>
+            <div class="field">
+              <label class="field-label">Yeni Şifre (Tekrar)</label>
+              <input type="password" id="new-password-2" class="field-input" placeholder="Tekrar girin" />
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="changePassword()">🔑 Şifreyi Kaydet</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- Save Bar -->
+<div class="save-bar" id="save-bar">
+  <span class="save-bar-text">⚠️ Kaydedilmemiş değişiklikler var</span>
+  <button class="btn btn-outline" onclick="hideSaveBar()">Yoksay</button>
+  <button class="btn btn-primary" onclick="saveAllSettings()">💾 Kaydet</button>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+  /* ============================================================
+     CONSTANTS & STATE
+  ============================================================ */
+  const DEFAULT_PASSWORD = 'ergo2024';
+  const STORAGE_KEY      = 'ergo_admin_settings';
+  const PASSWORD_KEY     = 'ergo_admin_password';
+
+  let currentSettings = {};
+  let hasChanges      = false;
+  let currentLogoType = 'emoji';
+
+  /* ============================================================
+     LOGIN
+  ============================================================ */
+  function getPassword() {
+    return localStorage.getItem(PASSWORD_KEY) || DEFAULT_PASSWORD;
+  }
+
+  function doLogin() {
+    const input = document.getElementById('admin-password').value;
+    if (input === getPassword()) {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('admin-app').style.display    = 'flex';
+      document.getElementById('admin-app').style.flexDirection = 'column';
+      loadSettings();
+    } else {
+      const err = document.getElementById('login-error');
+      err.style.display = 'block';
+      setTimeout(() => err.style.display = 'none', 3000);
+    }
+  }
+
+  document.getElementById('admin-password').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doLogin();
+  });
+
+  function doLogout() {
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('admin-app').style.display    = 'none';
+    document.getElementById('admin-password').value = '';
+  }
+
+  function changePassword() {
+    const p1 = document.getElementById('new-password').value;
+    const p2 = document.getElementById('new-password-2').value;
+    if (!p1) return showToast('❌ Şifre boş olamaz', true);
+    if (p1 !== p2) return showToast('❌ Şifreler eşleşmiyor', true);
+    if (p1.length < 4) return showToast('❌ Şifre en az 4 karakter olmalı', true);
+    localStorage.setItem(PASSWORD_KEY, p1);
+    document.getElementById('new-password').value = '';
+    document.getElementById('new-password-2').value = '';
+    showToast('✅ Şifre başarıyla değiştirildi!');
+  }
+
+  /* ============================================================
+     PANEL NAV
+  ============================================================ */
+  function showPanel(name) {
+    document.querySelectorAll('.panel-section').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+    document.getElementById('panel-' + name).classList.add('active');
+    document.getElementById('nav-' + name).classList.add('active');
+  }
+
+  /* ============================================================
+     SETTINGS LOAD / SAVE
+  ============================================================ */
+  function loadSettings() {
+    try {
+      currentSettings = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    } catch(e) { currentSettings = {}; }
+
+    const s = currentSettings;
+
+    // Brand
+    document.getElementById('logo-emoji').value         = s.logoEmoji  || '🧠';
+    document.getElementById('site-name-input').value    = s.siteName   || 'ergoterapi';
+    document.getElementById('site-domain-input').value  = s.siteDomain || '.com.tr';
+    document.getElementById('site-title-input').value   = s.siteTitle  || '';
+
+    if (s.logoType === 'image' && s.logoImage) {
+      setLogoType('image');
+      // Logo preview kutusunu güncelle
+      const preview = document.getElementById('logo-preview-box');
+      preview.innerHTML = `<img src="${s.logoImage}" alt="logo" style="width:100%;height:100%;object-fit:contain;">`;
+      // Canlı önizlemeyi güncelle
+      const liveIcon = document.getElementById('preview-logo-icon');
+      if (liveIcon) liveIcon.innerHTML = `<img src="${s.logoImage}" style="width:100%;height:100%;object-fit:contain;border-radius:6px;" alt="logo">`;
+    } else {
+      setLogoType('emoji');
+    }
+
+    if (s.favicon) {
+      const fav = document.getElementById('favicon-preview-box');
+      fav.innerHTML = `<img src="${s.favicon}" alt="favicon" style="width:48px;height:48px;object-fit:contain;">`;
+    }
+
+    // Contact
+    document.getElementById('input-phone').value     = s.phone     || '';
+    document.getElementById('input-whatsapp').value  = s.whatsapp  || '';
+    document.getElementById('input-email').value     = s.email     || '';
+    document.getElementById('input-hours').value     = s.hours     || '';
+    document.getElementById('input-address').value   = s.address   || '';
+
+    // Notice
+    document.getElementById('notice-visible').checked = s.noticeBarHide !== true;
+    document.getElementById('notice-title').value = s.noticeBarTitle || '🎯 Ücretsiz İlk Değerlendirme';
+    document.getElementById('notice-text').value  = s.noticeBar || 'İlk görüşme tamamen ücretsizdir.';
+    updateNoticePreview();
+
+    // SEO
+    document.getElementById('seo-title').value    = s.seoTitle    || '';
+    document.getElementById('seo-desc').value     = s.seoDesc     || '';
+    document.getElementById('seo-keywords').value = s.seoKeywords || '';
+
+    // Social
+    document.getElementById('social-instagram').value = s.instagram || '';
+    document.getElementById('social-facebook').value  = s.facebook  || '';
+    document.getElementById('social-youtube').value   = s.youtube   || '';
+    document.getElementById('social-twitter').value   = s.twitter   || '';
+
+    updateLogoPreview();
+    updateSaveStatus(false);
+  }
+
+  function saveAllSettings() {
+    const s = collectSettings();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
+    currentSettings = s;
+    hasChanges = false;
+    hideSaveBar();
+    updateSaveStatus(false);
+    showToast('✅ Tüm ayarlar kaydedildi!');
+  }
+
+  function collectSettings() {
+    return {
+      // Brand
+      logoType:      currentLogoType,
+      logoEmoji:     document.getElementById('logo-emoji').value,
+      logoImage:     currentSettings.logoImage || null,
+      siteName:      document.getElementById('site-name-input').value,
+      siteDomain:    document.getElementById('site-domain-input').value,
+      siteTitle:     document.getElementById('site-title-input').value,
+      favicon:       currentSettings.favicon || null,
+
+      // Contact
+      phone:         document.getElementById('input-phone').value,
+      whatsapp:      document.getElementById('input-whatsapp').value,
+      email:         document.getElementById('input-email').value,
+      hours:         document.getElementById('input-hours').value,
+      address:       document.getElementById('input-address').value,
+
+      // Notice
+      noticeBarHide:  !document.getElementById('notice-visible').checked,
+      noticeBarTitle: document.getElementById('notice-title').value,
+      noticeBar:      document.getElementById('notice-text').value,
+
+      // SEO
+      seoTitle:      document.getElementById('seo-title').value,
+      seoDesc:       document.getElementById('seo-desc').value,
+      seoKeywords:   document.getElementById('seo-keywords').value,
+
+      // Social
+      instagram:     document.getElementById('social-instagram').value,
+      facebook:      document.getElementById('social-facebook').value,
+      youtube:       document.getElementById('social-youtube').value,
+      twitter:       document.getElementById('social-twitter').value,
+    };
+  }
+
+  function resetAllSettings() {
+    if (!confirm('Tüm ayarlar sıfırlanacak. Emin misiniz?')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    currentSettings = {};
+    loadSettings();
+    showToast('🔄 Tüm ayarlar sıfırlandı.');
+  }
+
+  /* ============================================================
+     CHANGE TRACKING
+  ============================================================ */
+  function markChanged() {
+    if (!hasChanges) {
+      hasChanges = true;
+      showSaveBar();
+      updateSaveStatus(true);
+    }
+  }
+
+  document.addEventListener('input', markChanged);
+  document.addEventListener('change', markChanged);
+
+  function updateSaveStatus(unsaved) {
+    const el = document.getElementById('save-status');
+    if (unsaved) {
+      el.innerHTML = '⚠️ Kaydedilmemiş değişiklik';
+      el.style.color = '#FFD166';
+    } else {
+      el.innerHTML = '<span class="status-dot"></span>Kaydedildi';
+      el.style.color = '#06D6A0';
+    }
+  }
+
+  /* ============================================================
+     SAVE / HIDE BAR
+  ============================================================ */
+  function showSaveBar() { document.getElementById('save-bar').classList.add('visible'); }
+  function hideSaveBar()  { document.getElementById('save-bar').classList.remove('visible'); }
+
+  /* ============================================================
+     LOGO TYPE
+  ============================================================ */
+  function setLogoType(type) {
+    currentLogoType = type;
+    document.getElementById('logo-emoji-section').style.display  = type === 'emoji' ? 'block' : 'none';
+    document.getElementById('logo-image-section').style.display  = type === 'image' ? 'block' : 'none';
+    document.getElementById('logo-type-emoji').className = 'btn ' + (type === 'emoji' ? 'btn-primary' : 'btn-outline');
+    document.getElementById('logo-type-image').className = 'btn ' + (type === 'image' ? 'btn-primary' : 'btn-outline');
+    updateLogoPreview();
+  }
+
+  function updateLogoPreview() {
+    const name   = document.getElementById('site-name-input').value  || 'ergoterapi';
+    const domain = document.getElementById('site-domain-input').value || '.com.tr';
+    const emoji  = document.getElementById('logo-emoji').value        || '🧠';
+
+    document.getElementById('preview-site-name').textContent   = name;
+    document.getElementById('preview-site-domain').textContent = domain;
+
+    const liveIcon = document.getElementById('preview-logo-icon');
+    const liveText = document.getElementById('preview-logo-text');
+    if (!liveIcon) return;
+
+    if (currentLogoType === 'image' && currentSettings.logoImage) {
+      // Resim modu — büyük logo, yazı gizli
+      liveIcon.innerHTML = `<img src="${currentSettings.logoImage}" style="height:36px;max-width:160px;object-fit:contain;display:block;" alt="logo">`;
+      liveIcon.style.cssText = 'background:transparent; width:auto; height:auto; border-radius:0; padding:0; overflow:visible;';
+      if (liveText) liveText.style.display = 'none';
+    } else if (currentLogoType === 'image') {
+      // Resim modu ama henüz resim yüklenmemiş
+      liveIcon.innerHTML = '<span style="font-size:0.65rem;color:#6B6480;">Logo<br>Yükle</span>';
+      liveIcon.style.cssText = '';
+      if (liveText) liveText.style.display = 'none';
+    } else {
+      // Emoji modu
+      liveIcon.innerHTML = emoji;
+      liveIcon.style.cssText = '';
+      if (liveText) liveText.style.display = 'flex';
+    }
+  }
+
+  /* ============================================================
+     LOGO UPLOAD
+  ============================================================ */
+  function handleLogoUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    if (file.size > 2 * 1024 * 1024) return showToast('❌ Dosya 2MB\'den büyük olamaz.', true);
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const dataUrl = e.target.result;
+      currentSettings.logoImage = dataUrl;
+
+      const preview = document.getElementById('logo-preview-box');
+      preview.innerHTML = `<img src="${dataUrl}" alt="logo">`;
+
+      document.getElementById('preview-logo-icon').innerHTML = `<img src="${dataUrl}" style="width:100%;height:100%;object-fit:contain;border-radius:6px;" alt="logo">`;
+
+      markChanged();
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function clearLogoImage() {
+    currentSettings.logoImage = null;
+    document.getElementById('logo-preview-box').innerHTML = '<span id="logo-preview-emoji">🧠</span>';
+    document.getElementById('logo-file').value = '';
+    updateLogoPreview();
+    markChanged();
+  }
+
+  /* ============================================================
+     FAVICON UPLOAD
+  ============================================================ */
+  function handleFaviconUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const dataUrl = e.target.result;
+      currentSettings.favicon = dataUrl;
+
+      const preview = document.getElementById('favicon-preview-box');
+      preview.innerHTML = `<img src="${dataUrl}" alt="favicon" style="width:48px;height:48px;object-fit:contain;">`;
+      markChanged();
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function clearFavicon() {
+    currentSettings.favicon = null;
+    document.getElementById('favicon-preview-box').innerHTML = '<span id="favicon-preview-icon">🔖</span>';
+    document.getElementById('favicon-file').value = '';
+    markChanged();
+  }
+
+  /* ============================================================
+     NOTICE PREVIEW
+  ============================================================ */
+  function updateNoticePreview() {
+    const title   = document.getElementById('notice-title').value || '🎯 Ücretsiz İlk Değerlendirme';
+    const text    = document.getElementById('notice-text').value  || 'İlk görüşme tamamen ücretsizdir.';
+    const visible = document.getElementById('notice-visible').checked;
+
+    document.getElementById('np-title').textContent = title;
+    document.getElementById('np-text').textContent  = text;
+    document.getElementById('notice-preview').style.opacity = visible ? '1' : '0.3';
+  }
+
+  /* ============================================================
+     TOAST
+  ============================================================ */
+  function showToast(msg, isError = false) {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.style.background = isError ? '#EF4444' : '#06D6A0';
+    el.style.color = '#fff';
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 3000);
+  }
+</script>
+</body>
+</html>

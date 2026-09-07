@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Ana domain
+Sitemap: https://ergoterapi.com.tr/sitemap.xml
+
+# Tüm subdomain sitemap'leri
+Sitemap: https://istanbul.ergoterapi.com.tr/sitemap.xml
+Sitemap: https://ankara.ergoterapi.com.tr/sitemap.xml
+Sitemap: https://izmir.ergoterapi.com.tr/sitemap.xml
+Sitemap: https://bursa.ergoterapi.com.tr/sitemap.xml
+Sitemap: https://antalya.ergoterapi.com.tr/sitemap.xml
