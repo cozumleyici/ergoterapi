@@ -40,7 +40,7 @@ function generateSitemap() {
   // Şehir subdomain'leri
   CITY_SLUGS.forEach(slug => {
     urls.push({
-      loc: `https://${slug}.ergoterapi.com.tr/`,
+      loc: `https://ergoterapi.com.tr/${slug}`,
       lastmod: today,
       changefreq: 'monthly',
       priority: '0.8'

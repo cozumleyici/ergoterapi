@@ -5,493 +5,493 @@
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://adana.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/adana</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://adiyaman.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/adiyaman</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://afyonkarahisar.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/afyonkarahisar</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://agri.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/agri</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://aksaray.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/aksaray</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://amasya.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/amasya</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ankara.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/ankara</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://antalya.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/antalya</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ardahan.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/ardahan</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://artvin.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/artvin</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://aydin.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/aydin</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balikesir.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/balikesir</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bartin.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/bartin</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://batman.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/batman</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bayburt.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/bayburt</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bilecik.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/bilecik</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bingol.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/bingol</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bitlis.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/bitlis</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bolu.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/bolu</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://burdur.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/burdur</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bursa.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/bursa</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://canakkale.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/canakkale</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cankiri.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/cankiri</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://corum.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/corum</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://denizli.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/denizli</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://diyarbakir.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/diyarbakir</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://duzce.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/duzce</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://edirne.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/edirne</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://elazig.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/elazig</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://erzincan.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/erzincan</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://erzurum.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/erzurum</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://eskisehir.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/eskisehir</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gaziantep.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/gaziantep</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://giresun.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/giresun</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gumushane.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/gumushane</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hakkari.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/hakkari</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hatay.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/hatay</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://igdir.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/igdir</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://isparta.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/isparta</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://istanbul.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/istanbul</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://izmir.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/izmir</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kahramanmaras.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/kahramanmaras</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://karabuk.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/karabuk</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://karaman.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/karaman</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kars.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/kars</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kastamonu.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/kastamonu</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kayseri.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/kayseri</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kilis.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/kilis</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kirikkale.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/kirikkale</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kirklareli.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/kirklareli</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kirsehir.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/kirsehir</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kocaeli.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/kocaeli</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://konya.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/konya</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kutahya.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/kutahya</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://malatya.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/malatya</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://manisa.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/manisa</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mardin.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/mardin</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mersin.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/mersin</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mugla.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/mugla</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mus.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/mus</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nevsehir.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/nevsehir</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nigde.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/nigde</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ordu.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/ordu</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://osmaniye.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/osmaniye</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rize.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/rize</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sakarya.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/sakarya</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://samsun.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/samsun</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sanliurfa.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/sanliurfa</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://siirt.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/siirt</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sinop.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/sinop</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sirnak.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/sirnak</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sivas.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/sivas</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tekirdag.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/tekirdag</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tokat.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/tokat</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://trabzon.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/trabzon</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tunceli.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/tunceli</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://usak.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/usak</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://van.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/van</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yalova.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/yalova</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yozgat.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/yozgat</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://zonguldak.ergoterapi.com.tr/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://ergoterapi.com.tr/zonguldak</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

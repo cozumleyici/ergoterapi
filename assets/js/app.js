@@ -4,108 +4,105 @@
  */
 
 // ============================================================
-// 0. ADMIN SETTINGS — localStorage'dan yüklenir
+// 0. ADMIN SETTINGS
+// Önce /site-settings.json dener (tüm subdomain'lerde ortak),
+// bulamazsa localStorage'a bakar (lokal geliştirme).
 // ============================================================
-function loadAdminSettings() {
+function applySettings(s) {
+  if (!s || typeof s !== 'object') return;
+
+  // Favicon
+  if (s.favicon) {
+    const el = document.getElementById('site-favicon');
+    if (el) el.href = s.favicon;
+  }
+
+  // Logo
+  if (s.logoType === 'image' && s.logoImage) {
+    const logoWrapper = document.getElementById('nav-logo');
+    const icon        = document.getElementById('nav-logo-icon');
+    if (icon)        icon.innerHTML = `<img src="${s.logoImage}" alt="Logo">`;
+    if (logoWrapper) logoWrapper.classList.add('has-logo-img');
+  } else if (s.logoEmoji) {
+    const logoWrapper = document.getElementById('nav-logo');
+    const icon        = document.getElementById('nav-logo-icon');
+    if (icon)        icon.textContent = s.logoEmoji;
+    if (logoWrapper) logoWrapper.classList.remove('has-logo-img');
+  }
+
+  // Site adı
+  if (s.siteName) {
+    const nameEl   = document.getElementById('nav-site-name');
+    const domainEl = document.getElementById('nav-site-domain');
+    if (nameEl)   nameEl.textContent   = s.siteName;
+    if (domainEl) domainEl.textContent = s.siteDomain || '.com.tr';
+    const loaderLogo = document.getElementById('loader-logo-text');
+    if (loaderLogo) loaderLogo.textContent = (s.siteName || 'ergoterapi') + (s.siteDomain || '.com.tr');
+  }
+
+  // Sayfa başlığı
+  if (s.siteTitle) document.title = s.siteTitle;
+
+  // İletişim
+  const setVal = (id, val) => { const el = document.getElementById(id); if (el && val) el.textContent = val; };
+  setVal('contact-phone',    s.phone);
+  setVal('contact-email',    s.email);
+  setVal('contact-whatsapp', s.whatsapp);
+  setVal('contact-hours',    s.hours);
+  setVal('footer-phone',     s.phone);
+  setVal('footer-email',     s.email);
+
+  // Notice bar
+  const bar = document.getElementById('notice-bar');
+  if (bar) {
+    if (s.noticeBarHide) {
+      bar.style.display = 'none';
+    } else {
+      bar.style.display = '';
+      if (s.noticeBarTitle) {
+        const txt = document.getElementById('notice-bar-text');
+        if (txt) txt.textContent = s.noticeBarTitle;
+      }
+    }
+  }
+}
+
+async function loadAdminSettings() {
+  try {
+    // 1. Önce site-settings.json'ı dene (Vercel'de tüm subdomain'ler bu dosyayı paylaşır)
+    const res = await fetch('/site-settings.json', { cache: 'no-cache' });
+    if (res.ok) {
+      const json = await res.json();
+      if (json && Object.keys(json).length > 0) {
+        applySettings(json);
+        return;
+      }
+    }
+  } catch(e) { /* fetch başarısız */ }
+
+  // 2. Fallback: localStorage (lokal geliştirme)
   try {
     const s = JSON.parse(localStorage.getItem('ergo_admin_settings') || '{}');
-
-    // Favicon
-    if (s.favicon) {
-      const el = document.getElementById('site-favicon');
-      if (el) el.href = s.favicon;
-    }
-
-    // Logo (resim veya emoji/metin)
-    if (s.logoType === 'image' && s.logoImage) {
-      const logoWrapper = document.getElementById('nav-logo');
-      const icon = document.getElementById('nav-logo-icon');
-      if (icon) {
-        icon.innerHTML = `<img src="${s.logoImage}" alt="Logo">`;
-      }
-      // has-logo-img class'ı wrapper'a ekleniyor → CSS yazıyı gizler, resmi büyütür
-      if (logoWrapper) logoWrapper.classList.add('has-logo-img');
-    } else if (s.logoEmoji) {
-      const logoWrapper = document.getElementById('nav-logo');
-      const icon = document.getElementById('nav-logo-icon');
-      if (icon) {
-        icon.textContent = s.logoEmoji;
-      }
-      if (logoWrapper) logoWrapper.classList.remove('has-logo-img');
-    }
-
-    // Site adı
-    if (s.siteName) {
-      const nameEl = document.getElementById('nav-site-name');
-      const domainEl = document.getElementById('nav-site-domain');
-      if (nameEl)   nameEl.textContent  = s.siteName;
-      if (domainEl) domainEl.textContent = s.siteDomain || '.com.tr';
-      // Loader logo
-      const loaderLogo = document.getElementById('loader-logo-text');
-      if (loaderLogo) loaderLogo.textContent = (s.siteName || 'ergoterapi') + (s.siteDomain || '.com.tr');
-    }
-
-    // Site title (tab başlığı)
-    if (s.siteTitle) document.title = s.siteTitle;
-
-    // İletişim bilgileri
-    const setVal = (id, val) => { const el = document.getElementById(id); if (el && val) el.textContent = val; };
-    setVal('contact-phone',    s.phone);
-    setVal('contact-email',    s.email);
-    setVal('contact-whatsapp', s.whatsapp);
-    setVal('contact-hours',    s.hours);
-
-    // Notice bar
-    if (s.noticeBar !== undefined) {
-      const bar = document.getElementById('notice-bar');
-      if (bar) {
-        if (s.noticeBar === '' || s.noticeBarHide) {
-          bar.style.display = 'none';
-        } else if (s.noticeBar) {
-          const txt = document.getElementById('notice-bar-text');
-          if (txt) txt.textContent = s.noticeBar;
-        }
-      }
-    }
-
-    // Footer iletişim
-    const footerPhone = document.getElementById('footer-phone');
-    const footerEmail = document.getElementById('footer-email');
-    if (footerPhone && s.phone) footerPhone.textContent = s.phone;
-    if (footerEmail && s.email) footerEmail.textContent = s.email;
-
+    applySettings(s);
   } catch(e) { console.warn('Admin settings load error:', e); }
 }
 
 // ============================================================
-// 1. CITY DETECTION
+// 1. CITY DETECTION — path bazlı: ergoterapi.com.tr/yalova
 // ============================================================
 function detectCity() {
-  const hostname = window.location.hostname; // e.g. istanbul.ergoterapi.com.tr
-  const parts    = hostname.split('.');
-  const urlParams = new URLSearchParams(window.location.search);
+  // Path'ten şehir slug'ını oku: /yalova → 'yalova'
+  const pathSlug = window.location.pathname
+    .replace(/^\//, '')   // baştaki / kaldır
+    .replace(/\/$/, '')   // sondaki / kaldır
+    .split('/')[0]        // sadece ilk segment
+    .toLowerCase();
 
-  // Dev mode: ?city=istanbul overrides subdomain
-  const devCity = urlParams.get('city');
-  if (devCity && CITIES_DATA[devCity]) {
-    return CITIES_DATA[devCity];
+  if (pathSlug && CITIES_DATA[pathSlug]) {
+    return CITIES_DATA[pathSlug];
   }
 
-  // Production subdomain detection
-  // Hostname: istanbul.ergoterapi.com.tr → parts[0] = 'istanbul'
-  // Or:       ergoterapi.com.tr          → parts[0] = 'ergoterapi'
-  if (parts.length >= 3 && parts[0] !== 'www' && parts[0] !== 'ergoterapi') {
-    const slug = parts[0].toLowerCase();
-    if (CITIES_DATA[slug]) {
-      return CITIES_DATA[slug];
-    }
-    // Try normalized slugs (handle ş→s, ç→c, etc.)
-    for (const key of Object.keys(CITIES_DATA)) {
-      if (CITIES_DATA[key].slug === slug) return CITIES_DATA[key];
-    }
-  }
-
-  return null; // main site
+  return null; // ana sayfa
 }
 
 // ============================================================
@@ -127,11 +124,11 @@ function applyCity(city) {
       : 'Türkiye genelinde ergoterapi klinik ve uzman rehberi. Çocuk ergoterapisi, nörolojik rehabilitasyon, el terapisi ve daha fazlası için şehrinizi seçin.';
   }
 
-  // Canonical URL
+  // Canonical URL — path bazlı
   const canonical = document.querySelector('link[rel="canonical"]');
   if (canonical) {
     canonical.href = city
-      ? `https://${c.slug}.ergoterapi.com.tr`
+      ? `https://ergoterapi.com.tr/${c.slug}`
       : 'https://ergoterapi.com.tr';
   }
 
@@ -201,10 +198,9 @@ function buildCityLinks(activeCitySlug) {
   const container = document.getElementById('cities-grid');
   if (!container) return;
 
+  // Path bazlı link — localhost ve canlıda aynı format
   container.innerHTML = CITIES_LIST.map(city => {
-    const href = window.location.hostname.includes('localhost') || window.location.hostname.includes('127.0.0.1')
-      ? `?city=${city.slug}`
-      : `https://${city.slug}.ergoterapi.com.tr`;
+    const href     = `/${city.slug}`;
     const isActive = city.slug === activeCitySlug;
     return `<a href="${href}" class="city-link ${isActive ? 'city-link-active' : ''}" id="city-link-${city.slug}">
       <span>${city.emoji}</span> ${city.name}
@@ -221,7 +217,7 @@ function injectSchema(city, isCityPage) {
     "@type": "MedicalBusiness",
     "name": isCityPage ? `${city.name} Ergoterapi` : "Ergoterapi.com.tr",
     "description": city.description,
-    "url": isCityPage ? `https://${city.slug}.ergoterapi.com.tr` : "https://ergoterapi.com.tr",
+    "url": isCityPage ? `https://ergoterapi.com.tr/${city.slug}` : "https://ergoterapi.com.tr",
     "medicalSpecialty": "PhysicalTherapy",
     "areaServed": {
       "@type": "City",

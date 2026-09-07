@@ -634,6 +634,7 @@
       <span class="preview-badge" id="save-status">● Kaydedilmemiş değişiklik</span>
       <a href="index.html" target="_blank" class="btn btn-outline">🌐 Siteyi Gör</a>
       <button class="btn btn-primary" onclick="saveAllSettings()">💾 Kaydet</button>
+      <button class="btn btn-success" onclick="exportToGithub()" title="Ayarları site-settings.json olarak indir, GitHub'a yükle">📥 GitHub'a Aktar</button>
       <button class="btn btn-danger" onclick="doLogout()" title="Çıkış">🚪</button>
     </div>
   </header>
@@ -1091,6 +1092,39 @@
     hideSaveBar();
     updateSaveStatus(false);
     showToast('✅ Tüm ayarlar kaydedildi!');
+  }
+
+  function exportToGithub() {
+    // Önce kaydet
+    const s = collectSettings();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
+    currentSettings = s;
+
+    // site-settings.json olarak indir
+    const blob = new Blob([JSON.stringify(s, null, 2)], { type: 'application/json' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href     = url;
+    a.download = 'site-settings.json';
+    a.click();
+    URL.revokeObjectURL(url);
+
+    // Kullanıcıya talimat göster
+    setTimeout(() => {
+      alert(
+        '📥 site-settings.json indirildi!\n\n' +
+        'Şimdi yapmanız gerekenler:\n\n' +
+        '1. İndirilen dosyayı şuraya kopyalayın:\n' +
+        '   C:\\Users\\birol.sanli\\Birolscom\\ergoterapi\\\n\n' +
+        '2. PowerShell\'de çalıştırın:\n' +
+        '   cd C:\\Users\\birol.sanli\\Birolscom\\ergoterapi\n' +
+        '   git add site-settings.json\n' +
+        '   git commit -m "ayarlar guncellendi"\n' +
+        '   git push\n\n' +
+        '3. Vercel otomatik yeniden deploy eder.\n' +
+        '   Tüm subdomain\'ler yeni ayarları görür! ✅'
+      );
+    }, 500);
   }
 
   function collectSettings() {
