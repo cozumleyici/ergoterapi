@@ -564,17 +564,34 @@
       return;
     }
 
-    // — Telegram backend modu —
-    if (config.apiMode === "telegram" && config.apiUrl) {
+    // — Telegram modu (Doğrudan Telegram API'ye iletim) —
+    if (config.apiMode === "telegram") {
       showTyping();
+      const tgToken  = config.tgToken  || "8643642855:AAGDm3OBpARCcCnMLKQ7R7IR2eKtCaIYxHc";
+      const tgChatId = config.tgChatId || "6219303494";
+      const sessId   = sessionId();
+
       try {
-        await sendToBackend(text);
+        const tgMsg = `💬 *Canlı Destek Mesajı*\n` +
+          `Oturum: \`${sessId}\`\n` +
+          `Ziyaretçi: ${text}\n` +
+          `Saat: ${new Date().toLocaleTimeString('tr-TR')}`;
+
+        await fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: tgChatId,
+            text: tgMsg,
+            parse_mode: "Markdown"
+          })
+        });
+
         hideTyping();
-        appendSys("✅ Mesajın iletildi — destek ekibi Telegram'dan yanıtlıyor...");
-        startPolling();
+        appendSys("✅ Mesajınız danışmanımıza iletildi! Uzmanımız en kısa sürede sizinle iletişime geçecektir.");
       } catch (e) {
         hideTyping();
-        appendMsg("❌ Sunucuya bağlanılamadı. Lütfen tekrar dene.", "bot");
+        appendMsg("Mesajınız iletilirken bir sorun oluştu. Lütfen randevu formunu doldurun veya telefon numaramızdan bize ulaşın.", "bot");
       }
       return;
     }

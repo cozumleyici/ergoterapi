@@ -379,11 +379,14 @@ function initFaq() {
 }
 
 // ============================================================
-// 10. CONTACT FORM
+// 10. CONTACT FORM (E-posta + Telegram Entegrasyonu)
 // ============================================================
 function initForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
+
+  const TG_TOKEN   = '8643642855:AAGDm3OBpARCcCnMLKQ7R7IR2eKtCaIYxHc';
+  const TG_CHAT_ID = '6219303494';
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -409,60 +412,78 @@ function initForm() {
     const cityText  = citySelect && citySelect.selectedIndex >= 0 ? citySelect.options[citySelect.selectedIndex].text : '';
     const condText  = condSelect && condSelect.selectedIndex >= 0 && condSelect.value ? condSelect.options[condSelect.selectedIndex].text : '';
     const message   = messageInput ? messageInput.value.trim() : '';
-
-    // Hedef bildirim e-postası (Admin ayarlarından veya varsayılan ergoterapimail@gmail.com)
-    let targetEmail = 'ergoterapimail@gmail.com';
-    try {
-      const raw = localStorage.getItem('ergo_site_settings');
-      if (raw) {
-        const s = JSON.parse(raw);
-        if (s.email && s.email.trim()) targetEmail = s.email.trim();
-      }
-    } catch (_) {}
+    const targetEmail = 'ergoterapimail@gmail.com';
 
     btn.innerHTML = '<span>Gönderiliyor…</span>';
     btn.disabled = true;
 
-    try {
-      const response = await fetch('https://api.ergoterapi.com.tr/appointment.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: name,
-          phone: phone,
-          email: email,
-          city: cityText,
-          condition: condText,
-          message: message,
-          target_email: targetEmail
-        })
-      });
+    // 1. TELEGRAM BİLDİRİMİ GÖNDER
+    const sendTelegram = async () => {
+      try {
+        const text = `📋 *Yeni Randevu Başvurusu!*\n\n` +
+          `👤 *Ad Soyad:* ${name}\n` +
+          `📞 *Telefon:* \`${phone}\`\n` +
+          (email ? `✉️ *E-posta:* ${email}\n` : '') +
+          `📍 *Şehir:* ${cityText}\n` +
+          (condText ? `🎯 *Alan:* ${condText}\n` : '') +
+          (message ? `📝 *Mesaj:* ${message}\n` : '') +
+          `\n🕒 *Tarih:* ${new Date().toLocaleString('tr-TR')}`;
 
-      const result = await response.json().catch(() => null);
-
-      if (response.ok && result && result.ok) {
-        const successEl = document.getElementById('form-success');
-        if (successEl) {
-          form.style.display = 'none';
-          successEl.style.display = 'block';
-        } else {
-          btn.innerHTML = '✓ Randevu Alındı! En kısa sürede arayacağız.';
-          btn.style.background = 'linear-gradient(135deg, #06D6A0, #059669)';
-        }
-      } else {
-        const err = (result && result.error) ? result.error : 'Bir hata oluştu. Lütfen telefon ile ulaşınız.';
-        alert('Randevu gönderilemedi: ' + err);
-        btn.innerHTML = originalText;
-        btn.disabled = false;
+        await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: TG_CHAT_ID,
+            text: text,
+            parse_mode: 'Markdown'
+          })
+        });
+      } catch (tgErr) {
+        console.warn('Telegram bildirim hatası:', tgErr);
       }
-    } catch (err) {
-      console.error('Randevu formu hatası:', err);
-      // Ağ hatası olsa bile kullanıcıya alternatif sun
-      alert('Sunucuya ulaşılamadı. Lütfen sayfadaki telefon numaramız veya canlı destek üzerinden bize ulaşınız.');
-      btn.innerHTML = originalText;
-      btn.disabled = false;
+    };
+
+    // 2. E-POSTA GÖNDER (FormSubmit AJAX - ergoterapimail@gmail.com)
+    const sendEmail = async () => {
+      try {
+        const payload = {
+          _subject: `🔔 Yeni Randevu Başvurusu: ${name} (${cityText})`,
+          _template: 'table',
+          _captcha: 'false',
+          'Ad Soyad': name,
+          'Telefon': phone,
+          'E-posta': email || 'Belirtilmedi',
+          'Şehir': cityText,
+          'Destek Alanı': condText || 'Genel Değerlendirme',
+          'Mesaj': message || 'Mesaj girilmedi'
+        };
+
+        const res = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+        return res.ok;
+      } catch (mErr) {
+        console.warn('Mail gönderme hatası:', mErr);
+        return false;
+      }
+    };
+
+    // İkisini paralel çalıştır
+    await Promise.allSettled([sendTelegram(), sendEmail()]);
+
+    // Kullanıcıya başarı mesajı göster
+    const successEl = document.getElementById('form-success');
+    if (successEl) {
+      form.style.display = 'none';
+      successEl.style.display = 'block';
+    } else {
+      btn.innerHTML = '✓ Randevu Talebiniz Alındı!';
+      btn.style.background = 'linear-gradient(135deg, #06D6A0, #059669)';
     }
   });
 }
