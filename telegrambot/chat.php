@@ -53,12 +53,12 @@ if ($method === 'POST' && $action === 'send') {
     $data['time'] = time();
 
     // Telegram'a bildirim gönder
-    $tgText = "💬 *HazeBox Yeni Mesaj*\n";
-    $tgText .= "ID: `{$session}`\n";
-    $tgText .= "Ziyaretçi: {$message}\n\n";
-    $tgText .= "Cevap için: https://api.ergoterapi.com.tr/admin.html";
+    $tgText = "💬 *Ergoterapi.com.tr — Yeni Canlı Destek Mesajı*\n\n";
+    $tgText .= "👤 *Oturum ID:* `{$session}`\n";
+    $tgText .= "📝 *Ziyaretçi:* {$message}\n\n";
+    $tgText .= "👉 *Cevap vermek için tıklayın:*\nhttps://api.ergoterapi.com.tr/admin.html#{$session}";
 
-    sendTelegram($tgText);
+    sendTelegram($tgText, "https://api.ergoterapi.com.tr/admin.html#{$session}");
     file_put_contents($sessionFile, json_encode($data));
 
     exit(json_encode(['ok' => true]));
@@ -162,16 +162,31 @@ if ($method === 'POST' && $action === 'clear_sessions') {
     exit(json_encode(['ok' => true]));
 }
 
-function sendTelegram($text) {
+function sendTelegram($text, $urlButton = null) {
+    if (empty(TG_TOKEN) || empty(TG_CHAT_ID)) return;
     $url = "https://api.telegram.org/bot" . TG_TOKEN . "/sendMessage";
-    $postData = [
-        'chat_id' => TG_CHAT_ID,
-        'text' => $text,
-        'parse_mode' => 'Markdown'
+    $payload = [
+        'chat_id'                  => TG_CHAT_ID,
+        'text'                     => $text,
+        'parse_mode'               => 'Markdown',
+        'disable_web_page_preview' => false
     ];
+
+    if (!empty($urlButton)) {
+        $payload['reply_markup'] = json_encode([
+            'inline_keyboard' => [
+                [
+                    ['text' => '💬 Cevap Yazmak İçin Tıkla', 'url' => $urlButton]
+                ]
+            ]
+        ]);
+    }
+
     $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 6);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_exec($ch);
     curl_close($ch);
 }
