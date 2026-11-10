@@ -385,24 +385,85 @@ function initForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const btn = form.querySelector('.form-submit');
-    const originalText = btn.innerHTML;
+
+    const nameInput      = document.getElementById('form-name');
+    const phoneInput     = document.getElementById('form-phone');
+    const emailInput     = document.getElementById('form-email');
+    const citySelect     = document.getElementById('form-city');
+    const condSelect     = document.getElementById('form-condition');
+    const messageInput   = document.getElementById('form-message');
+    const btn            = form.querySelector('.form-submit');
+    const originalText   = btn.innerHTML;
+
+    const name  = nameInput ? nameInput.value.trim() : '';
+    const phone = phoneInput ? phoneInput.value.trim() : '';
+
+    if (!name || !phone) {
+      alert('Lütfen Ad Soyad ve Telefon alanlarını doldurunuz.');
+      return;
+    }
+
+    const email     = emailInput ? emailInput.value.trim() : '';
+    const cityText  = citySelect && citySelect.selectedIndex >= 0 ? citySelect.options[citySelect.selectedIndex].text : '';
+    const condText  = condSelect && condSelect.selectedIndex >= 0 && condSelect.value ? condSelect.options[condSelect.selectedIndex].text : '';
+    const message   = messageInput ? messageInput.value.trim() : '';
+
+    // Hedef bildirim e-postası (Admin ayarlarından veya varsayılan ergoterapimail@gmail.com)
+    let targetEmail = 'ergoterapimail@gmail.com';
+    try {
+      const raw = localStorage.getItem('ergo_site_settings');
+      if (raw) {
+        const s = JSON.parse(raw);
+        if (s.email && s.email.trim()) targetEmail = s.email.trim();
+      }
+    } catch (_) {}
 
     btn.innerHTML = '<span>Gönderiliyor…</span>';
     btn.disabled = true;
 
-    setTimeout(() => {
-      const successEl = document.getElementById('form-success');
-      if (successEl) {
-        form.style.display = 'none';
-        successEl.style.display = 'block';
+    try {
+      const response = await fetch('https://api.ergoterapi.com.tr/appointment.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          phone: phone,
+          email: email,
+          city: cityText,
+          condition: condText,
+          message: message,
+          target_email: targetEmail
+        })
+      });
+
+      const result = await response.json().catch(() => null);
+
+      if (response.ok && result && result.ok) {
+        const successEl = document.getElementById('form-success');
+        if (successEl) {
+          form.style.display = 'none';
+          successEl.style.display = 'block';
+        } else {
+          btn.innerHTML = '✓ Randevu Alındı! En kısa sürede arayacağız.';
+          btn.style.background = 'linear-gradient(135deg, #06D6A0, #059669)';
+        }
       } else {
-        btn.innerHTML = '✓ Gönderildi! En kısa sürede dönüş yapılacak.';
-        btn.style.background = 'linear-gradient(135deg, #06D6A0, #059669)';
+        const err = (result && result.error) ? result.error : 'Bir hata oluştu. Lütfen telefon ile ulaşınız.';
+        alert('Randevu gönderilemedi: ' + err);
+        btn.innerHTML = originalText;
+        btn.disabled = false;
       }
-    }, 1500);
+    } catch (err) {
+      console.error('Randevu formu hatası:', err);
+      // Ağ hatası olsa bile kullanıcıya alternatif sun
+      alert('Sunucuya ulaşılamadı. Lütfen sayfadaki telefon numaramız veya canlı destek üzerinden bize ulaşınız.');
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+    }
   });
 }
 
