@@ -564,34 +564,17 @@
       return;
     }
 
-    // — Telegram modu (Doğrudan Telegram API'ye iletim) —
+    // — Telegram modu (Backend üzerinden iki yönlü canlı sohbet) —
     if (config.apiMode === "telegram") {
       showTyping();
-      const tgToken  = config.tgToken  || "8643642855:AAGDm3OBpARCcCnMLKQ7R7IR2eKtCaIYxHc";
-      const tgChatId = config.tgChatId || "6219303494";
-      const sessId   = sessionId();
-
       try {
-        const tgMsg = `💬 *Canlı Destek Mesajı*\n` +
-          `Oturum: \`${sessId}\`\n` +
-          `Ziyaretçi: ${text}\n` +
-          `Saat: ${new Date().toLocaleTimeString('tr-TR')}`;
-
-        await fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            chat_id: tgChatId,
-            text: tgMsg,
-            parse_mode: "Markdown"
-          })
-        });
-
+        await sendToBackend(text);
         hideTyping();
-        appendSys("✅ Mesajınız danışmanımıza iletildi! Uzmanımız en kısa sürede sizinle iletişime geçecektir.");
+        appendSys("✅ Mesajınız iletildi — uzmanımız yanıtladığında burada görünecektir...");
+        startPolling();
       } catch (e) {
         hideTyping();
-        appendMsg("Mesajınız iletilirken bir sorun oluştu. Lütfen randevu formunu doldurun veya telefon numaramızdan bize ulaşın.", "bot");
+        appendMsg("❌ Sunucuya bağlanılamadı. Lütfen tekrar deneyiniz.", "bot");
       }
       return;
     }
